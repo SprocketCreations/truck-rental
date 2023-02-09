@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -216,
-    "scrollLeft": -68,
+    "scrollTop": -196,
+    "scrollLeft": -21,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -91,6 +91,29 @@
               "widthDefault": 60
             },
             "id": "ed3d642c-5709-4be1-880c-77b550754350"
+          },
+          {
+            "name": "image",
+            "comment": "",
+            "dataType": "VARCHAR",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 64.6005859375,
+              "widthDefault": 60
+            },
+            "id": "e48f5bb4-72d4-4001-ade4-6f9f04d0634a"
           },
           {
             "name": "width",
@@ -324,10 +347,10 @@
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 624,
           "top": 697,
-          "zIndex": 43,
+          "zIndex": 14,
           "widthName": 60,
           "widthComment": 60,
           "color": "#EE1313"
@@ -482,7 +505,7 @@
           "active": false,
           "left": 1168,
           "top": 482,
-          "zIndex": 44,
+          "zIndex": 2,
           "widthName": 60,
           "widthComment": 60,
           "color": "#E300FF"
@@ -611,10 +634,10 @@
           }
         ],
         "ui": {
-          "active": true,
+          "active": false,
           "left": 92,
           "top": 500,
-          "zIndex": 53,
+          "zIndex": 4,
           "widthName": 60,
           "widthComment": 60,
           "color": "#F6FF00"
@@ -700,7 +723,7 @@
           "active": false,
           "left": 638,
           "top": 374,
-          "zIndex": 46,
+          "zIndex": 3,
           "widthName": 60,
           "widthComment": 60,
           "color": "#18F541"
@@ -726,7 +749,7 @@
             "7f6122ee-eafa-43d8-bdaf-5a1b0117201c"
           ],
           "x": 1078.2646484375,
-          "y": 854.5,
+          "y": 864.75,
           "direction": "right"
         },
         "end": {
@@ -804,7 +827,7 @@
             "7f6122ee-eafa-43d8-bdaf-5a1b0117201c"
           ],
           "x": 624,
-          "y": 854.5,
+          "y": 864.75,
           "direction": "left"
         },
         "end": {
