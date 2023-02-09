@@ -1,0 +1,39 @@
+{{!-- Expects the following keys:
+
+@type {boolean} loggedIn True if the user is logged in.
+
+--}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rent-a-truck</title>
+
+	<link rel="stylesheet" href="/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header>
+		<nav class="main-navbar">
+			<h1><a href="/">Rent-a-truck</a></h1>
+			<ul>
+				<li><a class="nav-button" href="/"></a>Search</li>
+				{{#if loggedIn}}
+				<li><a class="nav-button" href="/dashboard/renter">Your Rentals</a></li>
+				<li><a class="nav-button" href="/dashboard/rental">Your Trucks</a></li>
+				<li><a class="nav-button" href="javascript:void(0);">Sign Out</a></li>
+				{{else}}
+				<li><a class="nav-button" href="/signin">Sign In</a></li>
+				{{/if}}
+			</ul>
+		</nav>
+		<div class="dummy-navbar"><!--Used to fill the space behind the nav bar--></div>
+	</header>
+	<main></main>
+</body>
+
+</html>
