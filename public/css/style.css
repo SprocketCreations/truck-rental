@@ -49,6 +49,10 @@ body {
 	min-height: 100%;
 }
 
+input {
+	background-color: var(--col-neutral-2);
+}
+
 .dummy-navbar,
 .main-navbar {
 	margin: 0;
@@ -118,4 +122,118 @@ body {
 	.main-navbar {
 		justify-content: flex-end;
 	}
+}
+
+.home {
+	margin: 0;
+	padding: 0 .5em;
+
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row-reverse;
+	gap: .5em;
+}
+
+.home-trucks {
+	flex-basis: 66%;
+}
+
+.home-trucks>main {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.home-search {
+	flex-basis: 33%;
+}
+
+.truck-search-preview {
+	cursor: pointer;
+	background-color: var(--col-neutral-3);
+	margin: 0;
+	padding: 0;
+
+	height: 150px;
+
+	display: flex;
+}
+
+.truck-search-preview>main {
+	flex: 1 1;
+	margin: 0;
+	padding: 1em 1em;
+}
+
+.truck-search-preview>main>* {
+	margin: 0;
+	padding: 0;
+}
+
+.truck-search-preview>main>h3 {
+	margin-bottom: 1em;
+}
+
+.truck-search-preview>header>img {
+	height: 100%;
+}
+
+.truck-search-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.truck-search-form h3 {
+	margin-bottom: .25em;
+}
+
+.pickup-date {}
+
+.rent-time input {
+	width: 5em;
+}
+
+.sort-by>main {
+	display: flex;
+	flex-direction: column;
+}
+
+.filter-width {}
+
+.filter-height {}
+
+.filter-length {}
+
+.truck-specifications {
+	margin: 0;
+	padding: .5em;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.truck-specifications>.row-1 {
+	display: flex;
+	flex: 1 1;
+	gap: .5em;
+}
+
+.truck-specifications>.row-1>.image-column {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.truck-specifications>.row-2 {
+	display: flex;
+	flex: 1 1;
+	gap: .5em;
+}
+
+.truck-specifications>.row-3 {
+	display: flex;
+	flex: 1 1;
+	gap: .5em;
 }

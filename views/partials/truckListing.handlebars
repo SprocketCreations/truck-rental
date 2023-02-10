@@ -1,0 +1,22 @@
+{{!--
+@type {string} truckURL The url to direct to when this listing is clicked.
+@type {string} imageURL The url to get the vehicle's image from.
+@type {string} name The display name of the vehicle.
+@type {number} pricePerHour The cost of the vehicle per hour in dollars.
+@type {number} pricePerMile The cost of the vehicle per mile driven in dollars.
+@type {number} rating The rating of the vehicle on a range of 0 to ten (inclusive.)
+--}}
+
+<a style="text-decoration:none;" href="{{truckURL}}">
+	<section class="truck-search-preview">
+		<header>
+			<img src="{{imageURL}}" alt="Image of the vehicle">
+		</header>
+		<main>
+			<h3>{{name}}</h3>
+			<p><span>${{pricePerHour}}</span> per hour</p>
+			<p><span>${{pricePerMile}}</span> per mile</p>
+			<span>⭐⭐⭐⭐⭐</span>
+		</main>
+	</section>
+</a>
