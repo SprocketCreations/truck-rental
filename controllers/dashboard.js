@@ -8,3 +8,5 @@ router.get("/renter", (req, res) => {
 router.get("/rental", (req, res) => {
     res.render("dashboardRental")
 })
+
+module.exports = router;

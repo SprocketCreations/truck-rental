@@ -16,3 +16,6 @@ router.get("/history/:id", (req, res) => {
 router.get("/new", (req, res) => {
     res.render("truckNew")
 })
+
+
+module.exports = router;

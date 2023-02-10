@@ -18,3 +18,5 @@ router.use("/truck", truckRoutes);
 //add dashboardRoute file path
 const dashboardRoute = require('./dashboard');
 router.use("/dashboard", dashboardRoute);
+
+module.exports = router;
