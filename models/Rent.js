@@ -13,6 +13,10 @@ Rent.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
+    status: {
+        type: DataTypes.ENUM,
+        values: ["returned", "checkedout"]
+    }
 }, {
     sequelize
 });
