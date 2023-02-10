@@ -4,7 +4,22 @@ const Review = require("./Review");
 const User = require("./User");
 
 
-// TODO: Create models relationships
+// Create models' relationships
+User.hasMany(Truck);
+Truck.hasOne(User);
+
+User.hasMany(Rent);
+Rent.hasOne(User);
+
+User.hasMany(Review);
+Review.hasOne(User);
+
+Truck.hasMany(Rent);
+Rent.hasOne(Truck);
+
+Truck.hasMany(Review);
+Review.hasOne(Rent);
+
 
 
 module.exports = {
