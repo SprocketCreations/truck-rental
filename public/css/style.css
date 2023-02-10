@@ -21,7 +21,7 @@
 
 
 	/* SIZING */
-	--sizing-nav-height: 3em;
+	--sizing-nav-height: 4em;
 }
 
 * {
@@ -61,6 +61,9 @@ body {
 .main-navbar {
 	background-color: var(--col-primary);
 
+	margin: 0;
+	padding: .5em 1em;
+
 	position: fixed;
 
 	display: flex;
@@ -69,8 +72,14 @@ body {
 	align-content: center;
 }
 
+.main-navbar a {
+	text-decoration: none;
+}
+
 .main-navbar h1 {
-	font-size: 3em;
+	font-size: 2em;
+	padding-left: .5em;
+	padding-right: .5em;
 }
 
 .main-navbar>ul {
@@ -87,13 +96,16 @@ body {
 .main-navbar>ul>li {
 	margin: 0;
 	padding: 0;
+
+	list-style: none;
 }
 
 .nav-button {
 	margin: 0;
-	padding: 1em .5em;
+	padding: .5rem 1rem;
 }
 
+.main-navbar h1:hover,
 .nav-button:hover {
 	background-color: var(--col-primary-darkened);
 }
