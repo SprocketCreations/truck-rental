@@ -52,4 +52,4 @@ Truck.init({
     sequelize
 });
 
-module.exports = User
+module.exports = Truck
