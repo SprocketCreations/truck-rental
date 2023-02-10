@@ -1,40 +1,60 @@
 {{!--
+@param {string} imageURL The url to fetch the image from.
+@param {string} name The display name of the truck.
+@param {number} rating The average rating of the truck.
+@param {number} fuelTankSize The size of the fuel tank in gallons.
+@param {number} mpg The miles per gallon of this truck.
+@param {number} milage The reading on the odometer.
+@param {number} pricePerHour The cost in dollars per hour to rent this truck.
+@param {number} pricePerMile The cost in dollars per mile driven to rent this truck.
+@param {number} width The width of the truck in feet.
+@param {number} height The heigth of the truck in feet.
+@param {number} length The length of the truck in feet.
+@param {Array<string>} features A list of strings to render in the features section.
+@param {Array<{ rating: number, blurb: string }>} reviews The reviews to show on this page. Leave undefined if there are no reviews.
 --}}
 <section class="truck-specifications">
 	<div class="row-1">
-		<section class="image-column">
-			<img src="https://placekitten.com/300/200" alt="Image of the vehicle">
+		<section>
+			<img src="{{imageURL}}" alt="Image of the vehicle">
 		</section>
 		<section>
 			<div>
-				<h3>17'</h3>
-				<span>⭐⭐⭐⭐⭐</span>
+				<h3>{{name}}</h3>
+				<span>{{rating}}⭐</span>
 			</div>
 			<section class="pickup-date">
-				<h3>Pickup Date:</h3>
-				<p>May, 10 2023 12:37pm</p>
+				<h4>Pickup Date:</h4>
+				<main>
+					<input type="date" id="pickup-date" name="pickup-date">
+				</main>
 			</section>
 			<section class="rent-time">
-				<h3>Rent time:</h3>
-				<p><span>5</span>hour<span style="display:inline-block;">s</span></p>
+				<h4>Rent time:</h4>
+				<main>
+					<input type="number" name="rent-duration" id="rent-duration">
+					<label for="rent-time">hour<span style="display: none;">s</span></label>
+				</main>
 			</section>
-			<button id="reserve-truck-button">Reserve</button>
+			<div>
+				<button id="reserve-truck-button">Reserve</button>
+			</div>
 		</section>
 	</div>
 	<div class="row-2">
 		<section>
 			<h3>Metrics:</h3>
 			<main>
-				<p><span>Fuel tank size:</span> <span>32</span> gallons</p>
-				<p><span>Miles per gallon:</span> <span>6</span></p>
-				<p><span>Mileage:</span> <span>12450</span> miles</p>
+				<p><span>Fuel tank size:</span> <span>{{fuelTankSize}}</span> gallons</p>
+				<p><span>Miles per gallon:</span> <span>{{mpg}}</span></p>
+				<p><span>Mileage:</span> <span>{{milage}}</span> miles</p>
 			</main>
 		</section>
 		<section>
 			<h3>Pricing:</h3>
 			<main>
-				<p>$<span>3</span> per hour</p>
-				<p>$<span>1</span> per mile</p>
+				<p>$<span>{{pricePerHour}}</span> per hour</p>
+				<p>$<span>{{pricePerMile}}</span> per mile</p>
 			</main>
 		</section>
 	</div>
@@ -42,33 +62,29 @@
 		<section>
 			<h3>Sizing:</h3>
 			<main>
-				<p><span>Width:</span> <span>12</span> feet</p>
-				<p><span>Height:</span> <span>17</span> feet</p>
-				<p><span>Length:</span> <span>10</span> feet</p>
+				<p><span>Width:</span> <span>{{width}}</span> feet</p>
+				<p><span>Height:</span> <span>{{height}}</span> feet</p>
+				<p><span>Length:</span> <span>{{length}}</span> feet</p>
 			</main>
 		</section>
 		<section>
 			<h3>Features:</h3>
 			<ul>
-				<li>Seats for 2 people</li>
-				<li>Air conditioning</li>
-				<li>Automatic transmission</li>
-				<li>Air bags</li>
-				<li>AM/FM Radio</li>
-				<li>Disc brakes</li>
+				{{#each features as |feature|}}
+				<li>{{feature}}</li>
+				{{/each}}
 			</ul>
 		</section>
 	</div>
 
 </section>
 <section class="truck-reviews">
+	{{#if reviews}}
 	<h2>Reviews:</h2>
 	<main>
 		{{#each reviews as |review|}}
+		{{> review}}
 		{{/each}}
-		{{> review rating=8 blurb="Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptatum animi? Aliquam, quaerat nihil quisquam delectus corrupti dolor expedita? Eligendi totam a ducimus numquam? Hic veniam sunt voluptates iusto doloremque!"}}
-		{{> review rating=8 blurb="Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptatum animi? Aliquam, quaerat nihil quisquam delectus corrupti dolor expedita? Eligendi totam a ducimus numquam? Hic veniam sunt voluptates iusto doloremque!"}}
-		{{> review rating=8 blurb="Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptatum animi? Aliquam, quaerat nihil quisquam delectus corrupti dolor expedita? Eligendi totam a ducimus numquam? Hic veniam sunt voluptates iusto doloremque!"}}
-		{{> review rating=8 blurb="Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptatum animi? Aliquam, quaerat nihil quisquam delectus corrupti dolor expedita? Eligendi totam a ducimus numquam? Hic veniam sunt voluptates iusto doloremque!"}}
 	</main>
+	{{/if}}
 </section>
