@@ -33,7 +33,7 @@ router.put("/pickup", (req, res) => {
             where: {
                 id: req.params.id,
             }
-        }).then(rentkData => {
+        }).then(rentData => {
             res.status(202).json(rentData)
         }).catch(err => {
             console.log(err);
@@ -95,19 +95,22 @@ router.put("/:id", (req, res) => {
             id: req.params.id
         }
     }).then(truckIdData => {
-        if (!(truckIdData.UserId == req.session.userId)) {
+        if (!truckIdData) {
+            return res.status(404).json({ msg: "NO SUCH TRUCK" })
+        } else if (!(truckIdData.UserId == req.session.userId)) {
             return res.status(403).json({ msg: "NOT YOUR TRUCK" })
+        } else {
+            Truck.update(req.body, {
+                where: {
+                    id: req.params.id,
+                }
+            }).then(truckData => {
+                res.status(202).json(truckData)
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
+            })
         }
-        Truck.update(req.body, {
-            where: {
-                id: req.params.id,
-            }
-        }).then(truckData => {
-            res.status(202).json(truckData)
-        }).catch(err => {
-            console.log(err);
-            res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
-        })
     })
 })
 
