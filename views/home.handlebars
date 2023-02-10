@@ -1,0 +1,94 @@
+{{!--
+@type {Array<object>} trucks A list of trucks to display
+	--}}
+
+	<div class="home">
+		<section class="home-search">
+			<h2>Search</h2>
+			<form id="truck-search-form" class="truck-search-form">
+				<section class="pickup-date">
+					<h3><label for="pickup-date">Pickup Date:</label></h3>
+					<main>
+						<input type="date" id="pickup-date" name="pickup-date">
+						<input type="time" id="pickup-date" name="pickup-time">
+					</main>
+				</section>
+				<section class="rent-time">
+					<h3><label for="rent-time">Rent time:</label></h3>
+					<input type="number" name="rent-duration" id="rent-duration">
+					<label for="rent-time">hour<span style="display: none;">s</span></label>
+				</section>
+				<section class="sort-by">
+					<h3>Sort by:</h3>
+					<main>
+						<div>
+							<input type="radio" name="sort-by" id="best-reviews" checked>
+							<label for="best-reviews">Best reviews</label>
+						</div>
+						<div>
+							<input type="radio" name="sort-by" id="most-reviews">
+							<label for="most-reviews">Most reviews</label>
+						</div>
+						<div>
+							<input type="radio" name="sort-by" id="price-per-hour">
+							<label for="price-per-hour">Least expensive per hour</label>
+						</div>
+						<div>
+							<input type="radio" name="sort-by" id="price-per-mile">
+							<label for="price-per-mile">Least expensive per mile</label>
+						</div>
+					</main>
+				</section>
+				<section class="filter-width">
+					<h3>Width</h3>
+					<main>
+						<label for="width-min">Min: </label>
+						<input type="number" id="width-min" name="width-min" min="0" max="50" value="0">
+						<label for="width-max">Max: </label>
+						<input type="number" id="width-max" name="width-max" min="0" max="50" value="20">
+					</main>
+				</section>
+				<section class="filter-height">
+					<h3>Height</h3>
+					<main>
+						<label for="height-min">Min: </label>
+						<input type="number" id="height-min" name="height-min" min="0" max="50" value="0">
+						<label for="height-max">Max: </label>
+						<input type="number" id="height-max" name="height-max" min="0" max="50" value="20">
+					</main>
+				</section>
+				<section class="filter-length">
+					<h3>Length</h3>
+					<main>
+						<label for="length-min">Min: </label>
+						<input type="number" id="length-min" name="length-min" min="0" max="50" value="0">
+						<label for="length-max">Max: </label>
+						<input type="number" id="length-max" name="length-max" min="0" max="50" value="20">
+					</main>
+				</section>
+			</form>
+		</section>
+
+		<section class="home-trucks">
+			<h2>Trucks</h2>
+			<main>
+				{{#each trucks as |truck|}}
+				{{/each}}
+				{{> truckListing truckURL='/truck/view/2' imageURL='https://placekitten.com/300/200' name='17\''
+				pricePerHour=5 pricePerMile=1
+				rating=7}}
+				{{> truckListing truckURL='/truck/view/2' imageURL='https://placekitten.com/300/200' name='17\''
+				pricePerHour=5 pricePerMile=1
+				rating=7}}
+				{{> truckListing truckURL='/truck/view/2' imageURL='https://placekitten.com/300/200' name='17\''
+				pricePerHour=5 pricePerMile=1
+				rating=7}}
+				{{> truckListing truckURL='/truck/view/2' imageURL='https://placekitten.com/300/200' name='17\''
+				pricePerHour=5 pricePerMile=1
+				rating=7}}
+				{{> truckListing truckURL='/truck/view/2' imageURL='https://placekitten.com/300/200' name='17\''
+				pricePerHour=5 pricePerMile=1
+				rating=7}}
+			</main>
+		</section>
+	</div>
