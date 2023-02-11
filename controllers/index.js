@@ -12,11 +12,14 @@ router.get("/signin", (req, res) => {
 })
 
 
-//add truckRoutes file path
+//add truckRoutes
 const truckRoutes = require('./truck');
 router.use("/truck", truckRoutes);
-//add dashboardRoute file path
+//add dashboardRoute 
 const dashboardRoute = require('./dashboard');
 router.use("/dashboard", dashboardRoute);
+//add api routes
+const apiRoute = require('./api');
+router.use("/api", apiRoute);
 
 module.exports = router;
