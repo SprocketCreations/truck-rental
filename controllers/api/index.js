@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const  User  = require('../../models/User.js');
+const { User, Review } = require('../../models');
 
 const truckApiRoute = require('./truck');
 router.use("/truck", truckApiRoute);
@@ -60,8 +60,20 @@ router.post("/signup", (req, res) => {
 })
 
 router.post("/review", (req, res) => {
-    res.send("review post")
-
+    if (!req.session.userId) {
+        return res.status(403).json({ msg: "login first to add new review" })
+    }
+    Review.create({
+        rating: req.body.rating,
+        blurb: req.body.blurb,
+        UserId: req.session.userId,
+        TruckId: req.body.TruckId
+    }).then(reviewData => {
+        res.status(201).json(reviewData)
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
+    })
 })
 
 
