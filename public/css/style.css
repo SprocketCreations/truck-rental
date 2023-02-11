@@ -14,15 +14,16 @@
 	--col-neutral-2: #273E47;
 	--col-neutral-3: #2D080A;
 
-	--text-light: white;
-	--text-link: blue;
-	--text-link-used: blue;
+	--text-light: rgb(222, 228, 228);
+	--text-link: rgb(177, 177, 255); 
+	--text-link-used: rgb(163, 138, 202); 
 
 
+	--shadow-dark: rgb(0 0 0 / 38%) 1px 5px 5px 2px;
+	--border-specifications: 1px solid var(--col-neutral-1);
 
 	/* SIZING */
 	--sizing-nav-height: 4em;
-	--border-specifications: 1px solid var(--col-neutral-1);
 }
 
 * {
@@ -55,13 +56,27 @@ input {
 }
 
 button {
+	cursor: pointer;
+
 	background-color: var(--col-secondary-3-darkened);
-	box-shadow: rgb(0 0 0 / 38%) 1px 5px 5px 2px;
+	box-shadow: var(--shadow-dark);
+
+	font-size: 1em;
+
 	padding: .5em 1em;
 	border: none;
 }
+
 button:hover {
 	background-color: var(--col-secondary-3);
+}
+
+a {
+	color: var(--text-link);
+}
+
+a:visited {
+	color: var(--text-link-used);
 }
 
 a:focus-visible,
@@ -79,6 +94,7 @@ button:focus-visible {
 }
 
 .main-navbar {
+	box-shadow: var(--shadow-dark);
 	background-color: var(--col-primary);
 
 	margin: 0;
@@ -93,6 +109,7 @@ button:focus-visible {
 }
 
 .main-navbar a {
+	color: var(--text-light);
 	text-decoration: none;
 }
 
@@ -308,6 +325,41 @@ button:focus-visible {
 
 	padding :1em;
 	padding-bottom: 0;
+}
+
+.signin-area {
+	width: 100%;
+	height: calc(100vh - var(--sizing-nav-height));
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.signin-form {
+	background-color: var(--col-secondary-1);
+	text-align: right;
+
+	margin: 0;
+	padding-top: .5em;
+
+	box-shadow: var(--shadow-dark);
+
+	/* display: flex;
+	flex-direction: column;
+	gap:1em; */
+}
+.signin-form>* {
+	margin: 2em;
+}
+
+.signin-form>:last-child {
+	text-align: center;
+
+	margin: 0;
+	padding: 2em;
+
+	background-color: var(--col-secondary-1-darkened);
 }
 
 
