@@ -403,20 +403,29 @@ button:focus-visible {
 	gap: 1em;
 }
 
-.pickup-truck-button {
+.green-button {
 	background-color: var(--col-secondary-1);
 }
 
-.pickup-truck-button:hover {
+.green-button:hover {
 	background-color: var(--col-secondary-1-darkened);
 }
 
-.return-truck-button {
+.yellow-button {
 	background-color: var(--col-secondary-2-darkened);
 }
 
-.return-truck-button:hover {
+.yellow-button:hover {
 	background-color: var(--col-secondary-2);
+}
+
+@media screen and (max-width: 700px) {	
+	.truck-status {
+		flex-wrap: wrap;
+	}
+	.truck-status>:last-child {
+		flex-basis: 100%;
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -448,5 +457,16 @@ button:focus-visible {
 
 	.truck-specifications>.row-1>:last-child {
 		border-top: none;
+	}
+}
+
+@media screen and (max-width: 500px) {	
+	.truck-status {
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+	.truck-status>:first-child>img {
+		height: auto;
+		width: 100%;
 	}
 }
