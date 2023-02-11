@@ -6,16 +6,16 @@ class Rent extends Model { }
 Rent.init({
     // add properites here, ex:
     pickUpDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
     },
     dropOffDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
     },
     status: {
         type: DataTypes.ENUM,
-        values: ["returned", "checkedout"]
+        values: ["available", "checkedout", "outforservice"]
     }
 }, {
     sequelize
