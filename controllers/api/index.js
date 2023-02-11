@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const  User  = require('../../models/User.js');
+const { User } = require('../../models');
 
 const truckApiRoute = require('./truck');
 router.use("/truck", truckApiRoute);

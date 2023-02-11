@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { Truck, User, Rent } = require('../models');
+const { Truck, User, Rent, Review } = require('../models');
 //render homepage
 
 router.get("/", (req, res) => {
     Truck.findAll({
+        include: [{model:Review}]
     }).then(truckData => {
         const truckArray = []
         for (let trucks of truckData) {
