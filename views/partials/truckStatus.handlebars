@@ -1,0 +1,37 @@
+{{!--
+@param {string} imageURL The url of the image to display.
+@param {string} name The display name of this truck.
+@param {string} pickupDate A formatted string detailing the expected pickup date. Only one of pickupDate and dropoffDate should be set.
+@param {string} dropoffDate A formatted string detailing the expected dropoff date. Only one of pickupDate and dropoffDate should be set.
+@param {number} totalCost The cost in dollars for this rent. (taking into account expected time )
+@param {number} pricePerMile The cost in dollars per miles driven.
+
+--}}
+
+<section class="truck-status">
+	<header>
+		<img src="{{imageURL}}" alt="Picture of the truck.">
+	</header>
+	<main>
+		<p>{{name}}</p>
+		{{#if pickupDate}}
+		<p>Pickup: {{pickupDate}}</p>
+		{{/if}}
+		{{#if dropoffDate}}
+		<p>DropoffPickup: {{dropoffDate}}</p>
+		{{/if}}
+		<p>Total cost: ${{totalCost}}</p>
+		<p>Plus ${{pricePerMile}} per mile</p>
+	</main>
+	<footer>
+		{{#if pickupDate}}
+		<button class="pickup-truck-button">Pick up</button>
+		{{/if}}
+		
+		{{#if dropoffDate}}
+		<button class="return-truck-button">Return</button>
+		{{/if}}
+		
+		<button>Cancel</button>
+	</footer>
+</section>

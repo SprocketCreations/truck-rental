@@ -2,7 +2,7 @@
 	/* COLORS */
 	--col-primary: #FB8B24;
 	--col-secondary-1: #5B8C5A;
-	--col-secondary-2: #CFD186;
+	--col-secondary-2: #abad5b;
 	--col-secondary-3: #033F63;
 
 	--col-primary-darkened: #bb7432;
@@ -15,8 +15,8 @@
 	--col-neutral-3: #2D080A;
 
 	--text-light: rgb(222, 228, 228);
-	--text-link: rgb(177, 177, 255); 
-	--text-link-used: rgb(163, 138, 202); 
+	--text-link: rgb(177, 177, 255);
+	--text-link-used: rgb(163, 138, 202);
 
 
 	--shadow-dark: rgb(0 0 0 / 38%) 1px 5px 5px 2px;
@@ -318,12 +318,13 @@ button:focus-visible {
 .review:first-of-type {
 	border-top: var(--border-specifications);
 }
+
 .review {
 	border-left: var(--border-specifications);
 	border-bottom: var(--border-specifications);
 	border-right: var(--border-specifications);
 
-	padding :1em;
+	padding: 1em;
 	padding-bottom: 0;
 }
 
@@ -349,6 +350,7 @@ button:focus-visible {
 	flex-direction: column;
 	gap:1em; */
 }
+
 .signin-form>* {
 	margin: 2em;
 }
@@ -362,6 +364,60 @@ button:focus-visible {
 	background-color: var(--col-secondary-1-darkened);
 }
 
+.renter-list {
+	margin: 0;
+	padding: .5em;
+
+	display: flex;
+	gap: 1em;
+}
+
+.truck-status {
+	border: var(--border-specifications);
+
+	margin: 0;
+	padding: 0;
+
+	display: flex;
+	gap: 1em;
+	flex: 1 1;
+}
+
+.truck-status>* {
+	flex: 1 1;
+}
+
+.truck-status>:first-child {
+	display: flex;
+}
+
+.truck-status>:first-child>img {
+	height: 11.5em;
+}
+
+.truck-status>:last-child {
+	padding: 1em;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.pickup-truck-button {
+	background-color: var(--col-secondary-1);
+}
+
+.pickup-truck-button:hover {
+	background-color: var(--col-secondary-1-darkened);
+}
+
+.return-truck-button {
+	background-color: var(--col-secondary-2-darkened);
+}
+
+.return-truck-button:hover {
+	background-color: var(--col-secondary-2);
+}
 
 @media screen and (max-width: 600px) {
 	.main-navbar h1 {
@@ -385,9 +441,9 @@ button:focus-visible {
 	.truck-specifications>*>* {
 		border-right: var(--border-specifications);
 	}
-	
+
 	.truck-specifications>.row-1>:first-child>img {
-		width:100%
+		width: 100%
 	}
 
 	.truck-specifications>.row-1>:last-child {
