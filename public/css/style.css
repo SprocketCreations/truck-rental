@@ -478,6 +478,108 @@ button:focus-visible {
 	align-items: center;
 }
 
+.new-truck {
+	margin: 0;
+	padding: 1em .5em;
+
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.new-truck * {
+	white-space: nowrap;
+}
+
+.new-truck>header {
+	border: var(--border-specifications);
+
+	padding: 0;
+	margin: 0;
+
+	flex: 1 1 100%;
+
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.new-truck-image {
+	cursor: pointer;
+}
+
+.new-truck-image-idle {
+	box-shadow: inset rgba(0, 0, 0, 0.267) 0 0 20px 10px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 18em;
+	height: 12em;
+}
+.new-truck-image>img {
+	max-height: 12em;
+}
+
+.new-truck-image:hover {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.new-truck>header>section {
+	padding: 1em;
+
+	flex: 1 1;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.new-truck>main {
+	flex: 1 1 100%;
+	display: flex;
+
+	border-left: var(--border-specifications);
+	border-bottom: var(--border-specifications);
+	border-right: var(--border-specifications);
+}
+
+.new-truck-details {
+
+	padding: 0;
+	margin: 0;
+
+	flex: 1 1 66%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.new-truck-pricing,
+.new-truck-dimensions,
+.new-truck-metrics {
+	padding: 1em;
+	padding-top: 0;
+
+	flex: 1 1 50%;
+}
+
+.new-truck-dimensions {
+	border-left: var(--border-specifications);
+}
+
+.new-truck-metrics {
+	border-top: var(--border-specifications);
+}
+
+.new-truck-features {
+	border-left: var(--border-specifications);
+
+	padding: 1em;
+	padding-top: 0;
+	margin: 0;
+
+	flex: 1 1 33%;
+}
+
 @media screen and (max-width: 700px) {
 	.truck-status {
 		flex-wrap: wrap;
@@ -501,6 +603,33 @@ button:focus-visible {
 	.truck-details>img {
 		height: auto;
 	}
+
+	.new-truck>header {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.new-truck>main {
+		flex-flow: column nowrap;
+	}
+
+	.new-truck-details {
+		flex-flow: column nowrap;
+	}
+
+	.new-truck-dimensions {
+		border-top: var(--border-specifications);
+		border-left: none;
+	}
+
+	.new-truck-features {
+		border-top: var(--border-specifications);
+		border-left: none;
+	}
+
+	.new-truck-image-idle {
+		width: 100%;
+	}	
 }
 
 @media screen and (max-width: 600px) {
