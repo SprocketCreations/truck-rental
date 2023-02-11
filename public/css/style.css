@@ -731,6 +731,10 @@ button:focus-visible {
 		flex-direction: column;
 		align-items: stretch;
 	}
+
+	.truck-return-main {
+		flex-direction: column;
+	}
 }
 
 @media screen and (max-width: 500px) {
