@@ -55,9 +55,12 @@ input {
 	background-color: var(--col-neutral-2);
 }
 
+.button,
 button {
+	color: var(--text-light);
 	cursor: pointer;
 
+	text-decoration: none;
 	background-color: var(--col-secondary-3-darkened);
 	box-shadow: var(--shadow-dark);
 
@@ -67,12 +70,17 @@ button {
 	border: none;
 }
 
+.button:hover,
 button:hover {
 	background-color: var(--col-secondary-3);
 }
 
 a {
 	color: var(--text-link);
+}
+
+.button:visited {
+	color: var(--text-light);
 }
 
 a:visited {
@@ -82,6 +90,10 @@ a:visited {
 a:focus-visible,
 button:focus-visible {
 	outline: var(--text-light) solid 1px;
+}
+
+.no-interact {
+	pointer-events: none;
 }
 
 .dummy-navbar,
@@ -419,12 +431,75 @@ button:focus-visible {
 	background-color: var(--col-secondary-2);
 }
 
-@media screen and (max-width: 700px) {	
+.grey-button {
+	background-color: var(--col-neutral-2);
+}
+
+.grey-button:hover {
+	background-color: var(--col-neutral-1);
+}
+
+.rental-dashboard {
+	padding: 1em .5em;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.rental-dashboard>div:first-of-type {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.truck-details {
+	border: var(--border-specifications);
+
+	padding: 0;
+	margin: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.truck-details>img {
+	height: 6em;
+}
+
+.truck-details>section {
+	padding: 0 1em;
+
+	display: flex;
+	flex: 1 1;
+	gap: 1em;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@media screen and (max-width: 700px) {
 	.truck-status {
 		flex-wrap: wrap;
 	}
+
 	.truck-status>:last-child {
 		flex-basis: 100%;
+	}
+
+	.truck-details>section {
+		padding: 1em 0;
+
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.truck-details>section>:first-child {
+		margin-top: 0;
+	}
+
+	.truck-details>img {
+		height: auto;
 	}
 }
 
@@ -458,13 +533,19 @@ button:focus-visible {
 	.truck-specifications>.row-1>:last-child {
 		border-top: none;
 	}
+
+	.truck-details {
+		flex-direction: column;
+		align-items: stretch;
+	}
 }
 
-@media screen and (max-width: 500px) {	
+@media screen and (max-width: 500px) {
 	.truck-status {
 		flex-direction: column;
 		flex-wrap: nowrap;
 	}
+
 	.truck-status>:first-child>img {
 		height: auto;
 		width: 100%;
