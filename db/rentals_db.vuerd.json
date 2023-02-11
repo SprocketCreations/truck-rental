@@ -3,8 +3,13 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
+<<<<<<< HEAD
+    "scrollTop": -223.66666666666663,
+    "scrollLeft": -87.33333333333333,
+=======
     "scrollTop": -302,
     "scrollLeft": -77,
+>>>>>>> dev
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -43,7 +48,7 @@
   "table": {
     "tables": [
       {
-        "name": "trucks",
+        "name": "Truck",
         "comment": "",
         "columns": [
           {
@@ -359,7 +364,7 @@
         "id": "2165ec17-fcef-4993-b672-5964e99dddd7"
       },
       {
-        "name": "reviews",
+        "name": "Review",
         "comment": "",
         "columns": [
           {
@@ -505,7 +510,11 @@
           "active": false,
           "left": 1168,
           "top": 482,
+<<<<<<< HEAD
+          "zIndex": 17,
+=======
           "zIndex": 1,
+>>>>>>> dev
           "widthName": 60,
           "widthComment": 60,
           "color": "#E300FF"
@@ -514,7 +523,7 @@
         "id": "8d3c539f-b02a-403b-b3be-bc77240f749f"
       },
       {
-        "name": "rents",
+        "name": "Rent",
         "comment": "",
         "columns": [
           {
@@ -637,7 +646,11 @@
           "active": false,
           "left": 92,
           "top": 500,
+<<<<<<< HEAD
+          "zIndex": 7,
+=======
           "zIndex": 3,
+>>>>>>> dev
           "widthName": 60,
           "widthComment": 60,
           "color": "#F6FF00"
@@ -646,7 +659,7 @@
         "id": "455f917c-facf-44ee-b978-38ab03686c7e"
       },
       {
-        "name": "users",
+        "name": "User",
         "comment": "",
         "columns": [
           {
@@ -723,7 +736,11 @@
           "active": false,
           "left": 638,
           "top": 374,
+<<<<<<< HEAD
+          "zIndex": 11,
+=======
           "zIndex": 2,
+>>>>>>> dev
           "widthName": 60,
           "widthComment": 60,
           "color": "#18F541"
