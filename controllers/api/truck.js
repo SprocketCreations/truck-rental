@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Truck, Rent } = require('../../models');
+const { Truck, Rent, User } = require('../../models');
 
 
 router.post("/reserve", (req, res) => {
@@ -69,14 +69,14 @@ router.post("/new", (req, res) => {
         return res.status(403).json({ msg: "login first to add new truck" })
     }
     Truck.create({
-        name: req.body.text,
-        image: req.body.BlogId,
+        name: req.body.name,
+        image: req.body.image,
         width: req.body.width,
         height: req.body.height,
         length: req.body.length,
         costPerMile: req.body.costPerMile,
         costPerHour: req.body.costPerHour,
-        milesperGallon: req.body.milesPerGallon,
+        milesPerGallon: req.body.milesPerGallon,
         odometer: req.body.odometer,
         fuelCapacity: req.body.fuelCapacity,
         features: req.body.feautures,
@@ -111,6 +111,26 @@ router.put("/:id", (req, res) => {
                 res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
             })
         }
+    })
+})
+
+//debuging code
+router.get("/", (req, res) => {
+    Truck.findAll({
+        include:[Rent, User]
+    }).then(userData => {
+        res.json(userData)
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "uh oh", err })
+    })
+})
+router.get("/reserve", (req, res) => {
+    Rent.findAll().then(userData => {
+        res.json(userData)
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "uh oh", err })
     })
 })
 

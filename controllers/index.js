@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Truck, User, Rent, Review } = require('../models');
+const { Truck, Review } = require('../models');
 //render homepage
 
 router.get("/", (req, res) => {
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
         const truckArray = []
         for (let trucks of truckData) {
             const truck = {
-                truckURL: "/view/" + trucks.id,
+                truckURL: "truck/view/" + trucks.id,
                 imageURL: trucks.image,
                 name: trucks.name,
                 pricePerHour: trucks.costPerHour,
