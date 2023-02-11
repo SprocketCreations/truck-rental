@@ -1,0 +1,17 @@
+{{!-- 
+@param { Array<{ imageURL: string,
+	name: string,
+	revenue: number,
+	isReserved: boolean,
+	isRented: boolean,
+	isIdle: boolean,
+	isUnavailable: boolean }> } trucks The details on the trucks to render.
+ --}}
+<div class="rental-dashboard">
+	<div>
+		<a class="button" href="/truck/new">Add a New Truck</a>
+	</div>
+	{{#each trucks as |truck|}}
+	{{> truckDetails}}
+	{{/each}}
+</div>
