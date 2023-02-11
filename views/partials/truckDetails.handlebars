@@ -1,0 +1,31 @@
+{{!--
+@param {string} imageURL The url of the image.
+@param {string} name The display name of this truck.
+@param {number} revenue The amount of money this truck has generated.
+
+// Only one of the following should be true:
+@param {boolean} isReserved
+@param {boolean} isRented
+@param {boolean} isIdle
+@param {boolean} isUnavailable
+--}}
+<section class="truck-details">
+	<img src="{{imageURL}}" alt="Picture of the truck.">
+	<section>
+		<h3>{{name}}</h3>
+		<p>Revenue Generated: ${{revenue}}</p>
+
+		{{#if isReserved}}
+		<button class="green-button no-interact">Reserved</button>
+		{{/if}}
+		{{#if isRented}}
+		<button class="yellow-button no-interact">Rented</button>
+		{{/if}}
+		{{#if isUnavailable}}
+		<button class="grey-button no-interact">Unavailable</button>
+		{{/if}}
+		{{#if isIdle}}
+		<button class="no-interact">Idle</button>
+		{{/if}}
+	</section>
+</section>
