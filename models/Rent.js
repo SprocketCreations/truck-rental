@@ -10,7 +10,7 @@ Rent.init({
         allowNull: false,
     },
     dropOffDate: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false,
     },
     status: {

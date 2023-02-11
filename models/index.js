@@ -6,19 +6,19 @@ const User = require("./User");
 
 // Create models' relationships
 User.hasMany(Truck);
-Truck.hasOne(User);
+Truck.belongsTo(User);
 
 User.hasMany(Rent);
-Rent.hasOne(User);
+Rent.belongsTo(User);
 
 User.hasMany(Review);
-Review.hasOne(User);
+Review.belongsTo(User);
 
 Truck.hasMany(Rent);
-Rent.hasOne(Truck);
+Rent.belongsTo(Truck);
 
 Truck.hasMany(Review);
-Review.hasOne(Rent);
+Review.belongsTo(Rent);
 
 
 
