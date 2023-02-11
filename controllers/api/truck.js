@@ -5,7 +5,7 @@ const { Truck, Rent, User } = require('../../models');
 
 router.post("/reserve", (req, res) => {
     if (!req.session.userId) {
-        return res.status(403).json({ msg: "login first to add new truck" })
+        return res.status(403).json({ msg: "login first to add new reservation" })
     }
     Rent.create({
         pickUpDate: req.body.pickUpDate,

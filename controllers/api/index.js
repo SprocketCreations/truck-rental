@@ -61,7 +61,7 @@ router.post("/signup", (req, res) => {
 
 router.post("/review", (req, res) => {
     if (!req.session.userId) {
-        return res.status(403).json({ msg: "login first to add new truck" })
+        return res.status(403).json({ msg: "login first to add new review" })
     }
     Review.create({
         rating: req.body.rating,
