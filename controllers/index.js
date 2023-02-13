@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { Truck, Review } = require('../models');
+const { Truck, Review, Rent } = require('../models');
 //render homepage
 
 router.get("/", (req, res) => {
     Truck.findAll({
-        include: [{ model: Review }]
+        include: [{ model: Rent, include:[Review] }]
     }).then(truckData => {
         const truckArray = []
         for (let trucks of truckData) {
             let avgRating = null;
-            if (trucks.Reviews.length != 0) {
-                for (let i = 0; i < trucks.Reviews.length; i++) {
-                    avgRating += trucks.Reviews[i].rating;
+            if (trucks.Rents.length != 0) {
+                for (let i = 0; i < trucks.Rents.length; i++) {
+                    avgRating += trucks.Rents[i].Review.rating;
                 }
-                avgRating = avgRating / trucks.Review.length;
+                avgRating = avgRating / trucks.Rents.length;
             }
             const truck = {
                 truckURL: "truck/view/" + trucks.id,

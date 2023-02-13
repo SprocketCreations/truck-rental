@@ -17,7 +17,7 @@ Review.belongsTo(User);
 Truck.hasMany(Rent);
 Rent.belongsTo(Truck);
 
-Truck.hasMany(Review);
+Rent.hasOne(Review);
 Review.belongsTo(Rent);
 
 

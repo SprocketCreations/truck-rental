@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const { User, Review } = require('../../models');
+const { User, Review, Rent } = require('../../models');
 
 const truckApiRoute = require('./truck');
 router.use("/truck", truckApiRoute);
@@ -70,12 +70,27 @@ router.post("/review", (req, res) => {
         rating: req.body.rating,
         blurb: req.body.blurb,
         UserId: req.session.userId,
-        TruckId: req.body.TruckId
+        TruckId: req.body.TruckId,
+        RentId:req.body.RentId
     }).then(reviewData => {
         res.status(201).json(reviewData)
     }).catch(err => {
         console.log(err);
         res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
+    })
+})
+
+
+//debugging
+router.get("/review", (req, res) => {
+    Review.findAll({
+        include:[Rent,User]
+    }
+    ).then(userData => {
+        res.json(userData)
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "uh oh", err })
     })
 })
 

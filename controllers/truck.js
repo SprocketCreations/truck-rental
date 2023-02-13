@@ -4,16 +4,22 @@ const { Truck, User, Rent, Review } = require('../models');
 
 router.get("/view/:id", (req, res) => {
     Truck.findByPk(req.params.id, {
-        include: [{model:Review}]
+        include: [{ model: Rent, include:[Review] }]
     }).then(truckData => {
-        const truck = truckData.toJSON();
-        
+        const truck = truckData;
+        const reviews =[]
+        console.log(truck.Rents.length)
         let avgRating = null;
-        if (truckData.Reviews.length != 0) {
-            for (let i = 0; i < trucks.Reviews.length; i++) {
-                avgRating += trucks.Reviews[i].rating;
+        if (truck.Rents.length != 0) {
+            for (let i = 0; i < truck.Rents.length; i++) {
+                avgRating += truck.Rents[i].Review.rating;
+                const oneReview = {
+                    rating:truck.Rents[i].Review.rating,
+                    blurb:truck.Rents[i].Review.blurb
+                }
+                reviews.push(oneReview)
             }
-            avgRating = avgRating / trucks.Review.length;
+            avgRating = avgRating / truck.Rents.length;
         }
         res.render("truckView", {
             imageURL: truck.image,
@@ -28,7 +34,7 @@ router.get("/view/:id", (req, res) => {
             height: truck.height,
             length: truck.length,
             features: truck.features,
-            reviews:truck.Review,
+            reviews:reviews,
             loggedIn:req.session.userId
         })
     }).catch(err => {
@@ -42,7 +48,45 @@ router.get("/return/:id", (req, res) => {
 })
 
 router.get("/history/:id", (req, res) => {
-    res.render("truckHistory")
+    Truck.findByPk(req.params.id, {
+        include: [{model:Rent, include: [Review]}]
+    }).then(truckData => {
+        const truck = truckData
+        console.log("hi")
+        console.log(truckData.toJSON());
+        const moneyMade = 0;
+        const rentHistory = []
+        if(truck.Rents){
+             //for loop that goes through all Rents
+            for (let rent of truck.Rents) {
+                if(rent.status == "returned"){
+                    moneyMade += rent.payment
+                }
+                if(rent.Review){
+                    const history = {
+                        status:rent.status,
+                        returned:rent.status === "returned" || rent.status === "canceled",
+                        rating:rent.Review.rating,
+                        pickupDate:rent.pickUpDate,
+                        hours:rent.hours
+                    }
+                    rentHistory.push(history)
+                }
+            }
+        }
+        res.render("truckHistory", {
+            imageURL:truck.image,
+            name:truck.name,
+            rentCount: truck.Rents.length,
+            milage:truck.odometer,
+            moneyMade: moneyMade,
+            history: rentHistory,
+            loggedIn:req.session.userId
+        })
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "INTER SERVER ERROR", err })
+    })
 })
 
 router.get("/new", (req, res) => {
