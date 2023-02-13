@@ -57,8 +57,9 @@ const seed = async () => {
     const rentals = await Rent.bulkCreate([
         {
             pickUpDate: 2023-03-01,
-            dropOffDate: 2023-03-04,
-            status: "checkedout"
+            status: "reserved",
+            hours: 3,
+            payment: 100.00
         },
     ], {
         validate: true
