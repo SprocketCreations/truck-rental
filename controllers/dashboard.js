@@ -8,7 +8,11 @@ router.get("/renter", (req, res) => {
     }).then(userData => {
         console.log(userData.toJSON());
         const rentArray = []
+        
         for (let rent of userData.Rents) {
+            console.log(rent.Truck.costPerHour)
+            console.log(rent.hours)
+            
             const truck = {
                 
                 // const date1 = dayjs()
@@ -18,14 +22,15 @@ router.get("/renter", (req, res) => {
                 //     do something with true and false to be able to picked up
                 // }
                 
+                pickup:rent.status === "reserved",
                 name: rent.Truck.name,
                 imageURL: rent.Truck.image,
                 pickupDate: rent.pickUpDate,
                 status: rent.status,
                 dropoffDate: rent.dropOffDate,
-                //totalCost: (rent.Truck.costPerMile * rent.hour) + (rent.hour * rent.Truck.costPerHour)
+                totalCost: (rent.hours * rent.Truck.costPerHour),
                 //this needs to be added after the models been updated. 
-                totalCost:1000,
+                //totalCost:1000,
                 pricePerMile: rent.Truck.costPerMile
             }
             rentArray.push(truck);

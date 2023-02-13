@@ -9,7 +9,7 @@ router.post("/reserve", (req, res) => {
     }
     Rent.create({
         pickUpDate: req.body.pickUpDate,
-        dropOffDate: req.body.dropOffDate,
+        hours:req.body.hours,
         UserId: req.session.userId,
         TruckId: req.body.TruckId
     }).then(rentData => {

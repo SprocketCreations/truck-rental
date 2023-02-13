@@ -22,11 +22,11 @@ router.put("/return/:id", (req, res) => {
     Rent.findByPk(req.params.id, {
         include: [Truck]
     }).then(rentData => {
-        //const paymentTotalHour = rentData.Truck.costPerMile * rentData.hour
+        const paymentTotalHour = rentData.Truck.costPerMile * rentData.hour
         const paymentTotalMile = req.body.milesDriven * rentData.Truck.costPerHour
         Rent.update({
             status: "returned",
-            payment: paymentTotalMile
+            payment: paymentTotalMile + paymentTotalHour
         },
             {
                 where: {
