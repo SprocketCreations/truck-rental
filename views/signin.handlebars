@@ -11,6 +11,7 @@
 			</div>
 			<div>
 				<button type="submit">Sign In</button>
+				<p id="incorrect-email-or-password-message" class="signin-message" style="display:none;">Email or password is incorrect</p>
 			</div>
 		</form>
 		<p style="text-align:center;">Don't have an account? <a id="show-signup" href="javascript:void(0);">Sign up!</a></p>
@@ -31,6 +32,9 @@
 			</div>
 			<div>
 				<button type="submit">Sign Up</button>
+				<p id="email-in-use-message" class="signin-message" style="display:none;">Email cannot be used</p>
+				<p id="passwords-dont-match-message" class="signin-message" style="display:none;">Passwords dont match</p>
+				<p id="password-requirements-message" class="signin-message" style="display:none;">Password must be at least 8 character long and contain at least one:<br>Lower case letter<br>Upper case letter<br>Number<br>Symbol</p>
 			</div>
 		</form>
 	</div>

@@ -70,6 +70,7 @@ button {
 	color: var(--text-light);
 	cursor: pointer;
 
+	text-align: center;
 	text-decoration: none;
 	background-color: var(--col-secondary-3-darkened);
 	box-shadow: var(--shadow-dark);
@@ -295,35 +296,35 @@ button:focus-visible {
 	border-top: var(--border-specifications);
 }
 
-.truck-specifications>.row-1>:first-child {
+.truck-specifications>.row-1>header {
 	display: flex;
 	flex-basis: 66%;
 	padding: 0;
 }
 
-.truck-specifications>.row-1>:last-child {
+.truck-specifications>.row-1>form {
 	flex-basis: 33%;
 	padding-bottom: 1em;
 }
 
 
-.truck-specifications>.row-1>:last-child>div:first-of-type {
+.truck-specifications>.row-1>form>header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.truck-specifications>.row-1>:last-child>div:last-of-type {
+.truck-specifications>.row-1>form>footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.truck-specifications>.row-1>:last-child h4 {
+.truck-specifications>.row-1>form h4 {
 	margin-bottom: .25em;
 }
 
-.truck-specifications>.row-1>:last-child p {
+.truck-specifications>.row-1>form p {
 	margin: 0;
 }
 
@@ -381,11 +382,16 @@ button:focus-visible {
 
 .signin-form>:last-child {
 	text-align: center;
-
+	
 	margin: 0;
 	padding: 2em;
-
+	
 	background-color: var(--col-secondary-1-darkened);
+}
+.signin-message {
+	color:rgb(248, 159, 132);
+	margin-bottom: 0;
+	text-align: left;
 }
 
 .renter-list {

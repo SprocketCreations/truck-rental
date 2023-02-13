@@ -6,7 +6,7 @@
 @param {string} dropoffDate A formatted string detailing the expected dropoff date.
 @param {number} totalCost The cost in dollars for this rent. (taking into account expected time )
 @param {number} pricePerMile The cost in dollars per miles driven.
-
+@param {number} rentId The id of the rent
 --}}
 
 <section class="truck-status">
@@ -22,11 +22,13 @@
 	</main>
 	<footer>
 		{{#if pickup}}
-		<button class="green-button">Pick up</button>
+		<button id="pickup-rent-button" data-rent-id="{{rentId}}" class="green-button">Pick up</button>
 		{{else}}
-		<button class="yellow-button">Return</button>
+		<a href="/truck/return/{{rentId}}" class="button yellow-button">Return</a>
 		{{/if}}
 		
-		<button>Cancel</button>
+		<button id="cancel-rent-button" data-rent-id="{{rentId}}" >Cancel</button>
+
+		<script src="/js/update-status.js"></script>
 	</footer>
 </section>

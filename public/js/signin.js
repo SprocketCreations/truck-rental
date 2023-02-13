@@ -3,6 +3,18 @@
 	const signupForm = document.querySelector("#signup-form");
 	const showSignup = document.querySelector("#show-signup");
 
+	const incorrectEorPMessage = document.querySelector("#incorrect-email-or-password-message");
+	const emailInUseMessage = document.querySelector("#email-in-use-message");
+	const passwordsDontMatchMessage = document.querySelector("#passwords-dont-match-message");
+	const passwordRequirementsMessage = document.querySelector("#password-requirements-message");
+
+	document.querySelectorAll("input").forEach(input => input.addEventListener("input", event => {
+		incorrectEorPMessage.style.display = "none";
+		emailInUseMessage.style.display = "none";
+		passwordsDontMatchMessage.style.display = "none";
+		passwordRequirementsMessage.style.display = "none";
+	}));
+
 
 	/** @type {boolean} Whether we are waiting for a response from the server. */
 	let outgoing = false;
@@ -24,13 +36,13 @@
 
 		// Verify that the two passwords match.
 		if (event.target[1].value !== event.target[2].value) {
-			alert("Passwords dont match");
+			passwordsDontMatchMessage.style.display = "block";
 			return;
 		}
 
 		// Verify that the user typed a valid password.
 		if (/^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/.test(event.target[1].value)) {
-			alert("Password must be 8 characters or longer and contain at least one:\nLower case letter\nUpper case letter\nNumber\nSymbol")
+			passwordRequirementsMessage.style.display = "block";
 			return;
 		}
 
@@ -60,6 +72,8 @@
 				} else {
 					window.location.href = document.referrer;
 				}
+			} else if (response.status === 403) {
+				incorrectEorPMessage.style.display = "block";
 			}
 		} catch (error) {
 			console.log(error);
@@ -90,6 +104,8 @@
 				} else {
 					window.location.href = document.referrer;
 				}
+			} else if (response.status === 403) {
+				emailInUseMessage.style.display = "block";
 			}
 		} catch (error) {
 			console.log(error);
