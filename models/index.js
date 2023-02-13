@@ -2,6 +2,7 @@ const Truck = require("./Truck");
 const Rent = require("./Rent");
 const Review = require("./Review");
 const User = require("./User");
+const Feature = require("./Feature")
 
 
 // Create models' relationships
@@ -20,11 +21,14 @@ Rent.belongsTo(Truck);
 Rent.hasOne(Review);
 Review.belongsTo(Rent);
 
+Feature.hasOne(Truck);
+Truck.hasOne(Feature);
 
 
 module.exports = {
     Truck,
     Rent,
     Review,
-    User
+    User,
+    Feature
 }
