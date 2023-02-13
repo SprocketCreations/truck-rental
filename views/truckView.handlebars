@@ -14,19 +14,19 @@
 @param {Array<{ rating: number, blurb: string }>} reviews The reviews to show on this page. Leave undefined if there are no reviews.
 --}}
 <section class="truck-specifications">
-	<div class="row-1">
-		<section>
+	<section class="row-1">
+		<header>
 			<img src="{{imageURL}}" alt="Image of the vehicle">
-		</section>
-		<section>
-			<div>
+		</header>
+		<form id="reserve-truck-form">
+			<header>
 				<h3>{{name}}</h3>
 				{{#if rating includeZero=true}}
 				<span>{{rating}}⭐</span>
 				{{else}}
 				<span>No reviews</span>
 				{{/if}}
-			</div>
+			</header>
 			<section class="pickup-date">
 				<h4>Pickup Date:</h4>
 				<main>
@@ -40,12 +40,12 @@
 					<label for="rent-time">hour<span style="display: none;">s</span></label>
 				</main>
 			</section>
-			<div>
+			<footer>
 				<button id="reserve-truck-button">Reserve</button>
-			</div>
-		</section>
-	</div>
-	<div class="row-2">
+			</footer>
+		</form>
+	</section>
+	<section class="row-2">
 		<section>
 			<h3>Metrics:</h3>
 			<main>
@@ -61,8 +61,8 @@
 				<p>$<span>{{pricePerMile}}</span> per mile</p>
 			</main>
 		</section>
-	</div>
-	<div class="row-3">
+	</section>
+	<section class="row-3">
 		<section>
 			<h3>Sizing:</h3>
 			<main>
@@ -79,8 +79,7 @@
 				{{/each}}
 			</ul>
 		</section>
-	</div>
-
+	</section>
 </section>
 {{#if reviews}}
 <section class="truck-reviews">
@@ -92,3 +91,5 @@
 	</main>
 </section>
 {{/if}}
+
+<script src="/js/truck-reserve.js"></script>
