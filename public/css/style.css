@@ -70,6 +70,7 @@ button {
 	color: var(--text-light);
 	cursor: pointer;
 
+	text-align: center;
 	text-decoration: none;
 	background-color: var(--col-secondary-3-darkened);
 	box-shadow: var(--shadow-dark);
