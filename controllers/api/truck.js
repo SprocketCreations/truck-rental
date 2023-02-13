@@ -9,7 +9,7 @@ router.post("/reserve", (req, res) => {
     }
     Rent.create({
         pickUpDate: req.body.pickUpDate,
-        dropOffDate: req.body.dropOffDate,
+        hours:req.body.hours,
         UserId: req.session.userId,
         TruckId: req.body.TruckId
     }).then(rentData => {
@@ -17,50 +17,6 @@ router.post("/reserve", (req, res) => {
     }).catch(err => {
         console.log(err);
         res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
-    })
-})
-
-router.put("/pickup", (req, res) => {
-    Rent.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(rentIdData => {
-        if (!(rentIdData.UserId == req.session.userId)) {
-            return res.status(403).json({ msg: "NOT YOUR RENTAL" })
-        }
-        Rent.update(req.body, {
-            where: {
-                id: req.params.id,
-            }
-        }).then(rentData => {
-            res.status(202).json(rentData)
-        }).catch(err => {
-            console.log(err);
-            res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
-        })
-    })
-})
-
-router.put("/return", (req, res) => {
-    Rent.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(rentIdData => {
-        if (!(rentIdData.UserId == req.session.userId)) {
-            return res.status(403).json({ msg: "NOT YOUR RENTAL" })
-        }
-        Rent.update(req.body, {
-            where: {
-                id: req.params.id,
-            }
-        }).then(rentkData => {
-            res.status(202).json(rentData)
-        }).catch(err => {
-            console.log(err);
-            res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
-        })
     })
 })
 

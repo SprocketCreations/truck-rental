@@ -6,6 +6,9 @@ const { User, Review } = require('../../models');
 const truckApiRoute = require('./truck');
 router.use("/truck", truckApiRoute);
 
+const rentApiRoute = require('./rent');
+router.use("/rent", rentApiRoute);
+
 
 router.delete("/signout", (req, res) => {
     if (!req.session.userId) {

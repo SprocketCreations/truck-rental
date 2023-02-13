@@ -7,10 +7,18 @@ router.get("/view/:id", (req, res) => {
         include: [{model:Review}]
     }).then(truckData => {
         const truck = truckData.toJSON();
+        
+        let avgRating = null;
+        if (truckData.Reviews.length != 0) {
+            for (let i = 0; i < trucks.Reviews.length; i++) {
+                avgRating += trucks.Reviews[i].rating;
+            }
+            avgRating = avgRating / trucks.Review.length;
+        }
         res.render("truckView", {
             imageURL: truck.image,
             name: truck.name,
-            //rating: truck.Review.rating,
+            rating: avgRating,
             fuelTankSize: truck.fuelCapacity,
             milage: truck.odometer,
             mpg: truck.milesPerGallon,
@@ -38,7 +46,9 @@ router.get("/history/:id", (req, res) => {
 })
 
 router.get("/new", (req, res) => {
-    res.render("truckNew")
+    res.render("truckNew",{
+        loggedIn:req.session.userId
+    })
 })
 
 
