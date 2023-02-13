@@ -12,7 +12,7 @@ Rent.init({
     status: {
         type: DataTypes.ENUM,
         values: ["reserved", "pickedup", "returned", "canceled"],
-        default: "reserved"
+        defaultValue: "reserved"
     },
     hours: {
         type: DataTypes.FLOAT,
