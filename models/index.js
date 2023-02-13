@@ -21,8 +21,8 @@ Rent.belongsTo(Truck);
 Rent.hasOne(Review);
 Review.belongsTo(Rent);
 
-Feature.hasOne(Truck);
-Truck.hasOne(Feature);
+Feature.belongsTo(Truck);
+Truck.hasMany(Feature);
 
 
 module.exports = {
