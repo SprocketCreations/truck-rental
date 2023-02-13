@@ -9,13 +9,18 @@ Rent.init({
         type: DataTypes.DATEONLY,
         allowNull: false,
     },
-    dropOffDate: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-    },
     status: {
         type: DataTypes.ENUM,
-        values: ["available", "checkedout", "outforservice"]
+        values: ["reserved", "pickedup", "returned", "canceled"],
+        default: "reserved"
+    },
+    hours: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
+    payment: {
+        type: DataTypes.DECIMAL,
+        allowNull: true
     }
 }, {
     sequelize
