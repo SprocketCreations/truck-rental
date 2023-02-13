@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js",
     "watch": "nodemon ./server.js --ignore views/ --ignore seed/ --ignore public/ --ignore tests/",
-    "seed": "node ./db/seed.js"
+    "seed": "node ./seeds/seed.js"
   },
   "repository": {
     "type": "git",
