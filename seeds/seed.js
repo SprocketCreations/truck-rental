@@ -1,6 +1,6 @@
 require("dotenv").config();
 const sequelize = require("../config/connection.js");
-const { User, Rent, Review, Truck } = require("../models");
+const { User, Rent, Review, Truck, Feature } = require("../models");
 
 const seed = async () => {
     await sequelize.sync({ force: true });
@@ -72,6 +72,26 @@ const seed = async () => {
         },
     ], {
         validate: true
+    });
+
+    const features = await Feature.bulkCreate([
+        {
+            featureName: "Cruise Control"
+        },
+        {
+            featureName: "Air conditioning"
+        },
+        {
+            featureName: "Automatic transmission"
+        },
+        {
+            featureName: "Android Auto"
+        },
+        {
+            featureName: "All wheel drive"
+        },
+    ], {
+        validate: true,
     });
 
     process.exit(1)
