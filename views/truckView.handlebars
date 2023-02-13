@@ -21,7 +21,11 @@
 		<section>
 			<div>
 				<h3>{{name}}</h3>
+				{{#if rating includeZero=true}}
 				<span>{{rating}}⭐</span>
+				{{else}}
+				<span>No reviews</span>
+				{{/if}}
 			</div>
 			<section class="pickup-date">
 				<h4>Pickup Date:</h4>
@@ -78,13 +82,13 @@
 	</div>
 
 </section>
+{{#if reviews}}
 <section class="truck-reviews">
-	{{#if reviews}}
 	<h2>Reviews:</h2>
 	<main>
 		{{#each reviews as |review|}}
 		{{> review}}
 		{{/each}}
 	</main>
-	{{/if}}
 </section>
+{{/if}}

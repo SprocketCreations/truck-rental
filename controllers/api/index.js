@@ -12,7 +12,7 @@ router.delete("/signout", (req, res) => {
         return res.status(404).json({ msg: "NOT FOUND" });
     }
     req.session.destroy();
-    res.redirect('/signin');
+    res.status(200).json({msg: "OK"});
 })
 
 router.post("/signin", (req, res) => {

@@ -1,0 +1,26 @@
+{{!-- 
+@param {string} imageURL The url of the image of the truck.
+@param {string} name The display name of this vehicle.
+@param {number} rentCount The count of rent entries associated with this truck.
+@param {number} moneyMade The total of payment across all the rent entries.
+@param {number} milage The truck's odometer.
+@param {Array<{status: string,
+	returned: boolean,
+	rating: number,
+	pickupDate: string,
+	hours: number }>} history An array of rents to render as the vehicle's history.
+ --}}
+<section class="truck-history">
+	<header>
+		<img src="{{imageURL}}" alt="Image of the truck.">
+		<main>
+			<h3>{{name}}</h3>
+			<p>Rented {{rentCount}} time<span>s</span></p>
+			<p>${{moneyMade}} made</p>
+			<p>Odometer {{milage}}</p>
+		</main>
+	</header>
+	{{#each history as |history|}}
+	{{> rentDetails}}
+	{{/each}}
+</section>

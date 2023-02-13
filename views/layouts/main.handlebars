@@ -25,7 +25,8 @@
 				{{#if loggedIn}}
 				<li><a class="nav-button" href="/dashboard/renter">Your Rentals</a></li>
 				<li><a class="nav-button" href="/dashboard/rental">Your Trucks</a></li>
-				<li><a class="nav-button" href="javascript:void(0);">Sign Out</a></li>
+				<li><a id="signout-button" class="nav-button" href="javascript:void(0);">Sign Out</a></li>
+				<script src="/js/signout.js"></script>
 				{{else}}
 				<li><a class="nav-button" href="/signin">Sign In</a></li>
 				{{/if}}
