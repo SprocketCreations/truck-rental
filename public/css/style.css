@@ -296,35 +296,35 @@ button:focus-visible {
 	border-top: var(--border-specifications);
 }
 
-.truck-specifications>.row-1>:first-child {
+.truck-specifications>.row-1>header {
 	display: flex;
 	flex-basis: 66%;
 	padding: 0;
 }
 
-.truck-specifications>.row-1>:last-child {
+.truck-specifications>.row-1>form {
 	flex-basis: 33%;
 	padding-bottom: 1em;
 }
 
 
-.truck-specifications>.row-1>:last-child>div:first-of-type {
+.truck-specifications>.row-1>form>header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.truck-specifications>.row-1>:last-child>div:last-of-type {
+.truck-specifications>.row-1>form>footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.truck-specifications>.row-1>:last-child h4 {
+.truck-specifications>.row-1>form h4 {
 	margin-bottom: .25em;
 }
 
-.truck-specifications>.row-1>:last-child p {
+.truck-specifications>.row-1>form p {
 	margin: 0;
 }
 
