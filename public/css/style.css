@@ -18,8 +18,12 @@
 	--text-link: rgb(177, 177, 255);
 	--text-link-used: rgb(163, 138, 202);
 
-
+	/* SHADOWS */
 	--shadow-dark: rgb(0 0 0 / 38%) 1px 5px 5px 2px;
+
+	/* BORDERS */
+	--border-dark: 2px solid rgb(20, 20, 20);
+	--border-light: 2px solid rgb(145, 145, 145);
 	--border-specifications: 1px solid var(--col-neutral-1);
 
 	/* SIZING */
@@ -51,9 +55,15 @@ body {
 	min-height: 100%;
 }
 
+textarea,
 input {
 	background-color: var(--col-neutral-2);
+	border-top: var(--border-dark);
+	border-left: var(--border-dark);
+	border-bottom: var(--border-light);
+	border-right: var(--border-light);
 }
+
 
 .button,
 button {
@@ -88,6 +98,8 @@ a:visited {
 }
 
 a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
 button:focus-visible {
 	outline: var(--text-light) solid 1px;
 }
@@ -478,6 +490,184 @@ button:focus-visible {
 	align-items: center;
 }
 
+.new-truck {
+	margin: 0;
+	padding: 1em .5em;
+
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.new-truck * {
+	white-space: nowrap;
+}
+
+.new-truck>header {
+	border: var(--border-specifications);
+
+	padding: 0;
+	margin: 0;
+
+	flex: 1 1 100%;
+
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.new-truck-image {
+	cursor: pointer;
+}
+
+.new-truck-image-idle {
+	box-shadow: inset rgba(0, 0, 0, 0.267) 0 0 20px 10px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 18em;
+	height: 12em;
+}
+
+.new-truck-image>img {
+	max-height: 12em;
+}
+
+.new-truck-image:hover {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.new-truck>header>section {
+	padding: 1em;
+
+	flex: 1 1;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.new-truck>main {
+	flex: 1 1 100%;
+	display: flex;
+
+	border-left: var(--border-specifications);
+	border-bottom: var(--border-specifications);
+	border-right: var(--border-specifications);
+}
+
+.new-truck-details {
+
+	padding: 0;
+	margin: 0;
+
+	flex: 1 1 66%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.new-truck-pricing,
+.new-truck-dimensions,
+.new-truck-metrics {
+	padding: 1em;
+	padding-top: 0;
+
+	flex: 1 1 50%;
+}
+
+.new-truck-dimensions {
+	border-left: var(--border-specifications);
+}
+
+.new-truck-metrics {
+	border-top: var(--border-specifications);
+}
+
+.new-truck-features {
+	border-left: var(--border-specifications);
+
+	padding: 1em;
+	padding-top: 0;
+	margin: 0;
+
+	flex: 1 1 33%;
+}
+
+.truck-return-form {
+	margin: 0;
+	padding: 1em .5em;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.truck-return-main {
+	display: flex;
+	gap: 1em;
+}
+
+.truck-return-main>div:nth-child(2) {
+	padding: 1em 1em 1em 0;
+
+	flex: 1 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: baseline;
+}
+
+.truck-return-main>div {
+
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.truck-return-review {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.truck-return-review>h3 {
+	margin-bottom: 0;
+}
+
+.truck-return-review>div:last-of-type {
+	display: flex;
+	padding: 0 1em 1em 1em;
+	justify-content: flex-end;
+}
+
+.truck-return-review>textarea {
+	resize: vertical;
+	min-height: 7em;
+}
+
+.truck-history {
+	padding: 1em .5em;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.truck-history>* {
+	border: var(--border-specifications);
+}
+
+.truck-history>header {
+	display: flex;
+	gap: 1em;
+}
+
+.truck-history>section {
+	padding-left: 1em;
+	padding-right: 1em;
+	display: flex;
+	justify-content: space-between;
+}
+
 @media screen and (max-width: 700px) {
 	.truck-status {
 		flex-wrap: wrap;
@@ -500,6 +690,33 @@ button:focus-visible {
 
 	.truck-details>img {
 		height: auto;
+	}
+
+	.new-truck>header {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.new-truck>main {
+		flex-flow: column nowrap;
+	}
+
+	.new-truck-details {
+		flex-flow: column nowrap;
+	}
+
+	.new-truck-dimensions {
+		border-top: var(--border-specifications);
+		border-left: none;
+	}
+
+	.new-truck-features {
+		border-top: var(--border-specifications);
+		border-left: none;
+	}
+
+	.new-truck-image-idle {
+		width: 100%;
 	}
 }
 
@@ -538,6 +755,10 @@ button:focus-visible {
 		flex-direction: column;
 		align-items: stretch;
 	}
+
+	.truck-return-main {
+		flex-direction: column;
+	}
 }
 
 @media screen and (max-width: 500px) {
@@ -549,5 +770,18 @@ button:focus-visible {
 	.truck-status>:first-child>img {
 		height: auto;
 		width: 100%;
+	}
+
+	.truck-history>* {
+		flex-direction: column;
+	}
+
+	.truck-history>header>main {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	.truck-history>header>main>h3 {
+		margin-top: 0;
 	}
 }

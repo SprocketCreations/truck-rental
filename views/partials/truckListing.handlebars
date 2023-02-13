@@ -16,7 +16,11 @@
 			<h3>{{name}}</h3>
 			<p><span>${{pricePerHour}}</span> per hour</p>
 			<p><span>${{pricePerMile}}</span> per mile</p>
+			{{#if rating includeZero=true}}
 			<span>{{rating}}⭐</span>
+			{{else}}
+			<span>No reviews</span>
+			{{/if}}
 		</main>
 	</section>
 </a>

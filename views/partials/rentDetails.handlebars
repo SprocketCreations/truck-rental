@@ -1,0 +1,22 @@
+{{!-- 
+@param {string} status The vehicle status to display.
+@param {boolean} returned True if the user has returned the vehicle.
+@param {number} rating The number of stars the client gave this rent. Undefined if there is no rating.
+@param {string}	pickupDate The formated date the rent begins.
+@param {number} hours The number of hours the client intends to use the truck.
+ --}}
+<section>
+	<div>
+		<p>Status: {{status}}</p>
+
+		{{#if rating includeZero=true}}
+		<p>{{rating}}⭐</p>
+		{{else if returned}}
+		<p>No review</p>
+		{{/if}}
+	</div>
+	<div>
+		<p>Reservation date: {{pickupDate}}</p>
+		<p>Reservation duration: {{hours}} hours</p>
+	</div>
+</section>
