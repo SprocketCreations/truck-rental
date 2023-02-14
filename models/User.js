@@ -17,7 +17,8 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [8]
+            len: [8],
+            not: /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/
         }
     }
 }, {

@@ -26,7 +26,7 @@ const seed = async () => {
     const trucks = await Truck.bulkCreate([
         {
             name: "Box Truck",
-            image: "Newtown",
+            image: "",
             width: 96,
             height: 96,
             length: 294,
@@ -39,7 +39,7 @@ const seed = async () => {
         },
         {
             name: "Bill's Longbed Chevy Pickup",
-            image: "Newtown",
+            image: "",
             width: 63.625,
             height: 0.0,
             length: 96.5,
@@ -67,7 +67,7 @@ const seed = async () => {
 
     const reviews = await Review.bulkCreate([
         {
-            rating: 4,
+            rating: 8,
             blurb: "It was a very easy to drive and roomie truck. Would rent again."
         },
     ], {

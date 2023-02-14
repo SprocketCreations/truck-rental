@@ -19,6 +19,7 @@ Review.init({
     blurb: {
         type: DataTypes.STRING,
         allowNull: false,
+        isEmpty: false,
     },
 }, {
     sequelize
