@@ -113,7 +113,11 @@ router.get("/search", async (req, res) => {
 		const truck = model.toJSON();
 		const [overlappingRent] = truck.Rents.filter(rent => {
 			const rentPickUpDate = dayjs(rent.pickUpDate);
-			return rentPickUpDate.isAfter(pickUpDate) && rentPickUpDate.isBefore(dropOffDate);
+			const rentDropOffDate = rentPickUpDate.add(Math.round(rent.hours/24), "day");
+			const startOverlaps = (rentPickUpDate.isAfter(pickUpDate) || rentPickUpDate.isSame(pickUpDate)) && (rentPickUpDate.isBefore(dropOffDate) || rentPickUpDate.isSame(dropOffDate));
+			if(startOverlaps) return true; // Exit early cause next line is expensive calc
+			const endOverlaps = (rentDropOffDate.isAfter(pickUpDate) || rentDropOffDate.isSame(pickUpDate)) && (rentDropOffDate.isBefore(dropOffDate) || rentDropOffDate.isSame(dropOffDate));
+			return endOverlaps;
 		});
 		if (overlappingRent) {
 			// do nothing
