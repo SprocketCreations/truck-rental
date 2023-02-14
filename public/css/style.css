@@ -142,6 +142,7 @@ button:focus-visible {
 	font-size: 2em;
 	padding-left: .5em;
 	padding-right: .5em;
+	white-space: nowrap;
 }
 
 .main-navbar>ul {
@@ -163,6 +164,7 @@ button:focus-visible {
 }
 
 .nav-button {
+	white-space: nowrap;
 	margin: 0;
 	padding: .5rem 1rem;
 }
@@ -382,14 +384,15 @@ button:focus-visible {
 
 .signin-form>:last-child {
 	text-align: center;
-	
+
 	margin: 0;
 	padding: 2em;
-	
+
 	background-color: var(--col-secondary-1-darkened);
 }
+
 .signin-message {
-	color:rgb(248, 159, 132);
+	color: rgb(248, 159, 132);
 	margin-bottom: 0;
 	text-align: left;
 }
@@ -400,6 +403,7 @@ button:focus-visible {
 
 	display: flex;
 	gap: 1em;
+	flex-direction: column;
 }
 
 .truck-status {
@@ -674,6 +678,16 @@ button:focus-visible {
 	justify-content: space-between;
 }
 
+@media screen and (max-width: 777px) {
+	.main-navbar h1 {
+		display: none;
+	}
+
+	.main-navbar {
+		justify-content: flex-end;
+	}
+}
+
 @media screen and (max-width: 700px) {
 	.truck-status {
 		flex-wrap: wrap;
@@ -727,14 +741,6 @@ button:focus-visible {
 }
 
 @media screen and (max-width: 600px) {
-	.main-navbar h1 {
-		display: none;
-	}
-
-	.main-navbar {
-		justify-content: flex-end;
-	}
-
 	.home {
 		flex-direction: column;
 	}
@@ -764,6 +770,18 @@ button:focus-visible {
 
 	.truck-return-main {
 		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 530px) {
+	.main-navbar {
+		overflow-y:visible;
+		overflow-x: scroll;
+		
+		display: block;
+	}
+	.main-navbar>ul {
+		height: 100%;
 	}
 }
 
