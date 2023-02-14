@@ -105,7 +105,15 @@ router.get("/search", async (req, res) => {
 
 		const calculateRent = truck => {
 			if (truck.Rents && truck.Rents.length) {
-				return truck.Rents.reduce(rent => rent.rating, 0) / truck.Rents.length;
+				let total = 0;
+				let count = 0;
+				truck.Rents.forEach(rent => {
+					if(rent.Review) {
+						total += rent.Review.rating;
+						++count;
+					}
+				});
+				return total / count;
 			}
 			return undefined;
 		};
