@@ -24,7 +24,7 @@ Rent.init({
     payment: {
         type: DataTypes.DECIMAL(10,2),
         allowNull: true,
-        isDecimal: true,
+        isNumeric: true,
         min:0.01,
     }
 }, {
