@@ -99,9 +99,15 @@ router.get("/search", async (req, res) => {
 						model: Review,
 						attributes: ["rating"],
 					}],
+                    where: {
+                        status: ["pickedup", "reserved"]
+                    
+                    },
+                    required:false
 				},
 			],
 		});
+
 
 		const calculateRent = truck => {
 			if (truck.Rents && truck.Rents.length) {
@@ -129,7 +135,7 @@ router.get("/search", async (req, res) => {
 				return endOverlaps;
 			});
 			if (overlappingRent) {
-				// do nothing
+				
 			} else {
 				truckDatas.push({
 					anchor: `/truck/view/${truck.id}`,
