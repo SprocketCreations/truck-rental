@@ -1,15 +1,3 @@
-{{!--
-@type {Array<{
-	trucks: Array<{
-		truckURL: string,
-		imageURL: string,
-		name: string,
-		pricePerHour: number,
-		pricePerMile: number,
-		rating: number
- 	}>
-}>} trucks A list of trucks to display
---}}
 <div class="home">
 	<section class="home-search">
 		<h2>Search</h2>
@@ -22,27 +10,27 @@
 				</main>
 			</section>
 			<section class="rent-time">
-				<h3><label for="rent-time">Rent time:</label></h3>
-				<input type="number" name="rent-duration" id="rent-duration">
-				<label for="rent-time">hour<span style="display: none;">s</span></label>
+				<h3><label for="rent-duration">Rent time:</label></h3>
+				<input type="number" name="rent-duration" id="rent-duration" value="8">
+				<label for="rent-duration">hour<span style="display: inline-block;">s</span></label>
 			</section>
 			<section class="sort-by">
 				<h3>Sort by:</h3>
 				<main>
 					<div>
-						<input type="radio" name="sort-by" id="best-reviews" checked>
+						<input type="radio" name="sort-by" id="best-reviews" value="bestReviews" checked>
 						<label for="best-reviews">Best reviews</label>
 					</div>
 					<div>
-						<input type="radio" name="sort-by" id="most-reviews">
+						<input type="radio" name="sort-by" id="most-reviews" value="mostReviews">
 						<label for="most-reviews">Most reviews</label>
 					</div>
 					<div>
-						<input type="radio" name="sort-by" id="price-per-hour">
+						<input type="radio" name="sort-by" id="price-per-hour" value="leastPerHour">
 						<label for="price-per-hour">Least expensive per hour</label>
 					</div>
 					<div>
-						<input type="radio" name="sort-by" id="price-per-mile">
+						<input type="radio" name="sort-by" id="price-per-mile" value="leastPerMile">
 						<label for="price-per-mile">Least expensive per mile</label>
 					</div>
 				</main>
@@ -79,10 +67,23 @@
 
 	<section class="home-trucks">
 		<h2>Trucks</h2>
-		<main>
-			{{#each trucks as |truck|}}
-			{{> truckListing}}
-			{{/each}}
+		<main id="truck-search-preview-container">
+			<template id="truck-search-preview-template">
+				<a id="truck-anchor" style="text-decoration:none;">
+					<section class="truck-search-preview">
+						<header>
+							<img id="truck-image" src="" alt="Image of the vehicle">
+						</header>
+						<main>
+							<h3 id="truck-name"></h3>
+							<p>$<span id="truck-price-per-hour"></span> per hour</p>
+							<p>$<span id="truck-price-per-mile"></span> per mile</p>
+							<span id="truck-rating"></span>
+						</main>
+					</section>
+				</a>
+			</template>
 		</main>
 	</section>
 </div>
+<script src="/js/home-search.js"></script>
