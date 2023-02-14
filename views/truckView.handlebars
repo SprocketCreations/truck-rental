@@ -1,0 +1,95 @@
+{{!--
+@param {string} imageURL The url to fetch the image from.
+@param {string} name The display name of the truck.
+@param {number} rating The average rating of the truck.
+@param {number} fuelTankSize The size of the fuel tank in gallons.
+@param {number} mpg The miles per gallon of this truck.
+@param {number} milage The reading on the odometer.
+@param {number} pricePerHour The cost in dollars per hour to rent this truck.
+@param {number} pricePerMile The cost in dollars per mile driven to rent this truck.
+@param {number} width The width of the truck in feet.
+@param {number} height The heigth of the truck in feet.
+@param {number} length The length of the truck in feet.
+@param {Array<string>} features A list of strings to render in the features section.
+@param {Array<{ rating: number, blurb: string }>} reviews The reviews to show on this page. Leave undefined if there are no reviews.
+--}}
+<section class="truck-specifications">
+	<section class="row-1">
+		<header>
+			<img src="{{imageURL}}" alt="Image of the vehicle">
+		</header>
+		<form id="reserve-truck-form">
+			<header>
+				<h3>{{name}}</h3>
+				{{#if rating includeZero=true}}
+				<span>{{rating}}⭐</span>
+				{{else}}
+				<span>No reviews</span>
+				{{/if}}
+			</header>
+			<section class="pickup-date">
+				<h4>Pickup Date:</h4>
+				<main>
+					<input type="date" id="pickup-date" name="pickup-date">
+				</main>
+			</section>
+			<section class="rent-time">
+				<h4>Rent time:</h4>
+				<main>
+					<input type="number" name="rent-duration" id="rent-duration">
+					<label for="rent-time">hour<span style="display: none;">s</span></label>
+				</main>
+			</section>
+			<footer>
+				<button id="reserve-truck-button">Reserve</button>
+			</footer>
+		</form>
+	</section>
+	<section class="row-2">
+		<section>
+			<h3>Metrics:</h3>
+			<main>
+				<p><span>Fuel tank size:</span> <span>{{fuelTankSize}}</span> gallons</p>
+				<p><span>Miles per gallon:</span> <span>{{mpg}}</span></p>
+				<p><span>Mileage:</span> <span>{{milage}}</span> miles</p>
+			</main>
+		</section>
+		<section>
+			<h3>Pricing:</h3>
+			<main>
+				<p>$<span>{{pricePerHour}}</span> per hour</p>
+				<p>$<span>{{pricePerMile}}</span> per mile</p>
+			</main>
+		</section>
+	</section>
+	<section class="row-3">
+		<section>
+			<h3>Sizing:</h3>
+			<main>
+				<p><span>Width:</span> <span>{{width}}</span> feet</p>
+				<p><span>Height:</span> <span>{{height}}</span> feet</p>
+				<p><span>Length:</span> <span>{{length}}</span> feet</p>
+			</main>
+		</section>
+		<section>
+			<h3>Features:</h3>
+			<ul>
+				{{#each features as |feature|}}
+				<li>{{feature}}</li>
+				{{/each}}
+			</ul>
+		</section>
+	</section>
+</section>
+{{#if reviews}}
+<section class="truck-reviews">
+	<h2>Reviews:</h2>
+	<main>
+		{{#each reviews as |review|}}
+		{{> review}}
+		{{/each}}
+	</main>
+</section>
+{{/if}}
+
+<script src="/js/truck-reserve.js"></script>

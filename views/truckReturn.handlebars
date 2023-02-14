@@ -1,0 +1,56 @@
+{{!-- 
+@param {string} imageURL The url of the picture to use.
+@param {string} name The display name of the truck.
+@param {number} price The total cost of the truck taking into account the reservation duration.
+@param {number} costPerMile The cost of the truck per mile driven.
+ --}}
+<form id="truck-return-form" class="truck-return-form">
+	<section class="truck-return-main">
+		<div>
+			<img src="{{imageURL}}" alt="Image of the truck.">
+		</div>
+		<div>
+			<h3>{{name}}</h3>
+			<div>
+				<label for="return-truck-distance">Distance driven</label>
+				<input required type="number" name="return-truck-distance" id="return-truck-distance"
+					min="1" max="25000">
+			</div>
+			<p>Your total $<span id="total-cost"></span></p>
+		</div>
+	</section>
+	<section class="truck-return-review">
+		<h3>Leave a review:</h3>
+		<div>
+			<label for="return-truck-rating">Number of stars</label>
+			<input type="number" name="return-truck-rating" id="return-truck-rating" value="10" min="0" max="10">
+		</div>
+		<textarea class="textarea" name="return-truck-review" id="return-truck-review"></textarea>
+		<div>
+			<button type="submit">Confirm</button>
+		</div>
+	</section>
+</form>
+<script>
+	{
+		const input = document.querySelector("#return-truck-distance");
+		const costSpan = document.querySelector("#total-cost");
+		const price = {{price}};
+		const costPerMile = {{costPerMile}};
+
+		input.addEventListener("change", event => {
+			input.value = input.value ? input.value : 0;
+		});
+		input.addEventListener("input", event => {
+			updatePriceIndicator();
+		});
+
+		const updatePriceIndicator = () => {
+			const costOfDistance = (parseFloat(costPerMile) * parseFloat(input.value));
+			costSpan.textContent = parseFloat(price) + (isNaN(costOfDistance) ? 0 : costOfDistance);
+		}
+
+		updatePriceIndicator();
+	}
+</script>
+<script src="/js/truck-return.js"></script>

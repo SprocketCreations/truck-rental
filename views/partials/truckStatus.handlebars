@@ -1,0 +1,34 @@
+{{!--
+@param {string} imageURL The url of the image to display.
+@param {string} name The display name of this truck.
+@param {boolean} pickup True if the pickup button should show.
+@param {string} pickupDate A formatted string detailing the expected pickup date.
+@param {string} dropoffDate A formatted string detailing the expected dropoff date.
+@param {number} totalCost The cost in dollars for this rent. (taking into account expected time )
+@param {number} pricePerMile The cost in dollars per miles driven.
+@param {number} rentId The id of the rent
+--}}
+
+<section class="truck-status">
+	<header>
+		<img src="{{imageURL}}" alt="Picture of the truck.">
+	</header>
+	<main>
+		<p>{{name}}</p>
+		<p>Pickup: {{pickupDate}}</p>
+		<p>Dropoff: {{dropoffDate}}</p>
+		<p>Total cost: ${{totalCost}}</p>
+		<p>Plus ${{pricePerMile}} per mile</p>
+	</main>
+	<footer>
+		{{#if pickup}}
+		<button id="pickup-rent-button" data-rent-id="{{rentId}}" class="green-button">Pick up</button>
+		{{else}}
+		<a href="/truck/return/{{rentId}}" class="button yellow-button">Return</a>
+		{{/if}}
+		
+		<button id="cancel-rent-button" data-rent-id="{{rentId}}" >Cancel</button>
+
+		<script src="/js/update-status.js"></script>
+	</footer>
+</section>

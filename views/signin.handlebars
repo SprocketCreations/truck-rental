@@ -1,0 +1,42 @@
+<div class="signin-area">
+	<div id="signin-screen">
+		<form id="signin-form" class="signin-form">
+			<div>
+				<label for="signin-email">Email</label>
+				<input required type="email" name="signin-email" id="signin-email">
+			</div>
+			<div>
+				<label for="signin-password">Password</label>
+				<input required type="password" name="signin-password" id="signin-password">
+			</div>
+			<div>
+				<button type="submit">Sign In</button>
+				<p id="incorrect-email-or-password-message" class="signin-message" style="display:none;">Email or password is incorrect</p>
+			</div>
+		</form>
+		<p style="text-align:center;">Don't have an account? <a id="show-signup" href="javascript:void(0);">Sign up!</a></p>
+	</div>
+	<div id="signup-screen" style="display: none;">
+		<form id="signup-form" class="signin-form">
+			<div>
+				<label for="signup-email">Email</label>
+				<input required type="email" name="signup-email" id="signup-email">
+			</div>
+			<div>
+				<label for="signup-password">Password</label>
+				<input required type="password" name="signup-password" id="signup-password">
+			</div>
+			<div>
+				<label for="signup-password">Re-enter Password</label>
+				<input required type="password" name="signup-password" id="signup-password">
+			</div>
+			<div>
+				<button type="submit">Sign Up</button>
+				<p id="email-in-use-message" class="signin-message" style="display:none;">Email cannot be used</p>
+				<p id="passwords-dont-match-message" class="signin-message" style="display:none;">Passwords dont match</p>
+				<p id="password-requirements-message" class="signin-message" style="display:none;">Password must be at least 8 character long and contain at least one:<br>Lower case letter<br>Upper case letter<br>Number<br>Symbol</p>
+			</div>
+		</form>
+	</div>
+</div>
+<script src="/js/signin.js"></script>

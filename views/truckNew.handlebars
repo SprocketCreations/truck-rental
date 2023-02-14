@@ -1,0 +1,93 @@
+<form class="new-truck" id="new-truck-form">
+	<header>
+		<label id="new-truck-image-label" for="new-truck-image" class="new-truck-image new-truck-image-idle">
+			{{!-- this button is fake. It tricks you into clicking the label ^ --}}
+			<a class="button">Upload Image</a>
+			<img id="new-truck-image-preview" src="" alt="Picture of the truck" style="display:none;">
+		</label>
+		<input required type="file" name="new-truck-image" id="new-truck-image" accept=".jpg" style="display:none;">
+		<section>
+			<div>
+				<label for="new-truck-name">Name</label>
+				<input required type="text" id="new-truck-name" name="new-truck-name">
+			</div>
+			<button type="submit">Create</button>
+		</section>
+	</header>
+	<main>
+		<section class="new-truck-details">
+			<section class="new-truck-pricing">
+				<h3>Pricing</h3>
+				<main>
+					<div>
+						<label for="new-truck-cost-per-hour">$</label>
+						<input required type="number" name="new-truck-cost-per-hour" id="new-truck-cost-per-hour"
+							value="1" min="0" max="999">
+						<label for="new-truck-cost-per-hour">per hour</label>
+					</div>
+					<div>
+						<label for="new-truck-cost-per-mile">$</label>
+						<input required type="number" name="new-truck-cost-per-mile" id="new-truck-cost-per-mile"
+							value="1" min="0" max="999">
+						<label for="new-truck-cost-per-mile">per mile</label>
+					</div>
+				</main>
+			</section>
+			<section class="new-truck-dimensions">
+				<h3>Dimensions</h3>
+				<main>
+					<div>
+						<label for="new-truck-width">Width</label>
+						<input required type="number" name="new-truck-width" id="new-truck-width" value="10" min="0"
+							max="100">
+						<label for="new-truck-width">feet</label>
+					</div>
+					<div>
+						<label for="new-truck-length">Length</label>
+						<input required type="number" name="new-truck-length" id="new-truck-length" value="17" min="0"
+							max="100">
+						<label for="new-truck-length">feet</label>
+					</div>
+					<div>
+						<label for="new-truck-height">Height</label>
+						<input required type="number" name="new-truck-height" id="new-truck-height" value="9" min="0"
+							max="100">
+						<label for="new-truck-height">feet</label>
+					</div>
+				</main>
+			</section>
+			<section class="new-truck-metrics">
+				<h3>Metrics</h3>
+				<main>
+					<div>
+						<label for="new-truck-fuel-tank-size">Fuel Tank</label>
+						<input required type="number" name="new-truck-fuel-tank-size" id="new-truck-fuel-tank-size"
+							value="10" min="0" max="100">
+						<label for="new-truck-fuel-tank-size">gallons</label>
+					</div>
+					<div>
+						<label for="new-truck-mpg">Miles Per Gallon</label>
+						<input required type="number" name="new-truck-mpg" id="new-truck-mpg" value="17" min="0"
+							max="999">
+					</div>
+					<div>
+						<label for="new-truck-milage">Odometer</label>
+						<input required type="number" name="new-truck-milage" id="new-truck-milage" value="100000"
+							min="0">
+						<label for="new-truck-milage">miles</label>
+					</div>
+				</main>
+			</section>
+		</section>
+		<section class="new-truck-features">
+			<h3>
+				Features
+			</h3>
+			<main>
+				<ul id="new-truck-features-list">
+				</ul>
+			</main>
+		</section>
+	</main>
+</form>
+<script src="/js/truck-new.js"></script>

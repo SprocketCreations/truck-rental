@@ -1,0 +1,17 @@
+{{!-- 
+@param {Array<{ imageURL: string,
+	name: string,
+	pickup: boolean,
+	pickupDate: string,
+	dropoffDate: string,
+	totalCost: number,
+	pricePerMile: number,
+	rentId: number }>} trucks An array of trucks to be rendered to the screen. See `./partials/truckStatus.handlebars`
+--}}
+
+
+<div class="renter-list">
+	{{#each trucks as |truck|}}
+	{{> truckStatus}}
+	{{/each}}
+</div>
