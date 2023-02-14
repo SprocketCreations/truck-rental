@@ -48,7 +48,7 @@ router.get("/return/:id", (req, res) => {
         include: [{model:Truck}]
     }).then(rentData => {
         let returnData = null
-        if(rentData.Truck){
+        if( rentData && rentData.Truck){
             returnData = {
                 imageURL:rentData.Truck.image,
                 name:rentData.Truck.name,
