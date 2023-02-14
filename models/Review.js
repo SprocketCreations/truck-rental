@@ -8,9 +8,12 @@ Review.init({
     rating: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        isint: true,
+        defaultValue: 3,
+        isEmpty: false,
         validate: {
             min: 0,
-            max: 5
+            max: 10
         },
     },
     blurb: {
