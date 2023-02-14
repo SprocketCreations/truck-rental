@@ -47,8 +47,13 @@
 			});
 
 			const [returnResponse, reviewResponse] = await Promise.all([returnPromise, reviewPromise]);
+			console.log(returnResponse, reviewResponse);
 			const [returnJson, reviewJson] = await Promise.all([returnResponse.json(), reviewResponse.json()]);
 			console.log(returnJson, reviewJson);
+
+			if(returnResponse.status === 200) {
+				window.location.href = `/dashboard/renter`;
+			}
 		} catch (error) {
 			console.log(error);
 		}
