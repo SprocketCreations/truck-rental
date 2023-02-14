@@ -6,7 +6,7 @@
 
 {
 	/** @type {number} Millisecond interval that must elapse before a search request can be sent */
-	const TIMEOUT = 5000;
+	const TIMEOUT = 1000;
 
 	/** @type {HTMLElement} */
 	const container = document.querySelector("#truck-search-preview-container");
@@ -36,16 +36,18 @@
 			const timeoutPromise = new Promise(resolve => setTimeout(resolve, TIMEOUT));
 			const fetchPromise = fetch(getFetchUrl(form));
 
-			// Await the time and fetch
-			const [, response] = await Promise.all([timeoutPromise, fetchPromise]);
+			fetchPromise.then(async response => {
+				const json = await response.json();
+				clearTruckPreviewArea();
+				json.forEach(createTruckPreview);
+			});
 
-			const json = await response.json();
-			clearTruckPreviewArea();
-			json.trucks.forEach(createTruckPreview);
+			// Await the time and fetch
+			await Promise.all([timeoutPromise, fetchPromise]);
 
 			// After that time, we are done waiting.
 			waiting = false;
-
+			console.log("wait over")
 			// If the user altered the form while waiting, refetch the homepage
 			if (changesSinceLastFetch) {
 				changesSinceLastFetch = false;
@@ -96,15 +98,15 @@
 	 * @param {number} truck.rating The average rating.
 	 */
 	const createTruckPreview = truck => {
-		const fragment = template.cloneNode(true);
-
-		fragment.querySelector("#truck-anchor").setAttribute();
-		fragment.querySelector("#truck-image").setAttribute();
+		/** @type {DocumentFragment} */
+		const fragment = template.content.cloneNode(true);
+		fragment.querySelector("#truck-anchor").setAttribute("href", truck.anchor);
+		fragment.querySelector("#truck-image").setAttribute("src", truck.imageUrl);
 
 		fragment.querySelector("#truck-name").textContent = truck.name;
 		fragment.querySelector("#truck-price-per-hour").textContent = truck.pricePerHour;
 		fragment.querySelector("#truck-price-per-mile").textContent = truck.pricePerMile;
-		fragment.querySelector("#truck-rating").textContent = truck.rating;
+		fragment.querySelector("#truck-rating").textContent = truck.rating ? `${truck.rating}⭐` : "No reviews";
 
 		container.appendChild(fragment);
 	};
