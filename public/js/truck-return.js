@@ -16,9 +16,9 @@
 		outgoing = true;
 		try {
 			//Regex is fun
-			const truckId = /\/(?<id>[0-9]*)(\?|$)/.exec(window.location.href).groups.id;
+			const rentId = /\/(?<id>[0-9]*)(\?|$)/.exec(window.location.href).groups.id;
 
-			const returnPromise = fetch(`/api/truck/return/${truckId}`, {
+			const returnPromise = fetch(`/api/rent/return/${rentId}`, {
 				method: "PUT",
 				cache: 'no-cache',
 				credentials: 'same-origin',
@@ -27,7 +27,7 @@
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					distanceDriven: form.elements["return-truck-distance"]
+					distanceDriven: form.elements["return-truck-distance"].value
 				}),
 			});
 
@@ -40,9 +40,9 @@
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					rating: form.elements["return-truck-rating"],
-					blurb: form.elements["return-truck-review"],
-					TruckId: truckId
+					rating: form.elements["return-truck-rating"].value,
+					blurb: form.elements["return-truck-review"].value,
+					RentId: rentId
 				}),
 			});
 
