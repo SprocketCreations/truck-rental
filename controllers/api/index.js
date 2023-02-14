@@ -108,7 +108,6 @@ router.get("/search", async (req, res) => {
 			],
 		});
 
-        console.log(allTrucks)
 
 		const calculateRent = truck => {
 			if (truck.Rents && truck.Rents.length) {
@@ -127,7 +126,6 @@ router.get("/search", async (req, res) => {
 
 		allTrucks.forEach(model => {
 			const truck = model.toJSON();
-            console.log(truck)
 			const [overlappingRent] = truck.Rents.filter(rent => {
 				const rentPickUpDate = dayjs(rent.pickUpDate);
 				const rentDropOffDate = rentPickUpDate.add(Math.round(rent.hours / 24), "day");
