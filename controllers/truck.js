@@ -44,7 +44,27 @@ router.get("/view/:id", (req, res) => {
 })
 
 router.get("/return/:id", (req, res) => {
-    res.render("truckReturn")
+    Rent.findByPk(req.params.id, {
+        include: [{model:Truck}]
+    }).then(rentData => {
+        let returnData = null
+        if(rentData.Truck){
+            returnData = {
+                imageURL:rentData.Truck.image,
+                name:rentData.Truck.name,
+                costPerMile: rentData.Truck.costPerMile,
+                price:rentData.Truck.costPerHour * rentData.hours,
+                loggedIn:req.session.userId
+            }
+            res.render("truckReturn", returnData)
+        } else {
+           res.status(400).json({msg: "RENT DOES NOT EXIST OR RENT IS NOT ATTACHeD TO TRUCKID"})
+        }
+        
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
+    })
 })
 
 router.get("/history/:id", (req, res) => {
