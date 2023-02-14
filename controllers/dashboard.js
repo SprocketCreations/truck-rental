@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { Truck, User, Rent, Review } = require('../models');
+const dayjs = require('dayjs')
+dayjs().format()
+
 
 router.get("/renter", (req, res) => {
     User.findByPk(req.session.userId, {
@@ -10,18 +13,9 @@ router.get("/renter", (req, res) => {
         const rentArray = []
         
         for (let rent of userData.Rents) {
-            console.log(rent.Truck.costPerHour)
-            console.log(rent.hours)
-            
+            const pickupDate = dayjs(rent.pickUpDate);
+            const dropoffDate = pickupDate.add(Math.round(rent.hours/ 24),'day');
             const truck = {
-                
-                // const date1 = dayjs()
-                // const date2 = dayjs(rent.pickUpDate)
-                // console.log(date1.diff(date2,'day'));
-                // if(date1.diff(date2,'day') == 0 ) {
-                //     do something with true and false to be able to picked up
-                // }
-                
                 pickup:rent.status === "reserved",
                 name: rent.Truck.name,
                 imageURL: rent.Truck.image,
@@ -29,8 +23,8 @@ router.get("/renter", (req, res) => {
                 status: rent.status,
                 dropoffDate: rent.dropOffDate,
                 totalCost: (rent.hours * rent.Truck.costPerHour),
-                //this needs to be added after the models been updated. 
-                //totalCost:1000,
+                dropoffDate: dayjs(dropoffDate).format('YYYY-MM-DD'),
+                rentId:rent.id,
                 pricePerMile: rent.Truck.costPerMile
             }
             rentArray.push(truck);
