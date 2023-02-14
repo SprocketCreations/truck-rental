@@ -12,9 +12,13 @@ router.get("/", (req, res) => {
             let avgRating = null;
             if (trucks.Rents.length != 0) {
                 for (let i = 0; i < trucks.Rents.length; i++) {
-                    avgRating += trucks.Rents[i].Review.rating;
+                    if(trucks.Rents[i].Review){
+                        avgRating += trucks.Rents[i].Review.rating;
+                    }
                 }
-                avgRating = avgRating / trucks.Rents.length;
+                if(avgRating !== null){
+                    avgRating = avgRating / trucks.Rents.length;
+                }
             }
             const truck = {
                 truckURL: "truck/view/" + trucks.id,
