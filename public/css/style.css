@@ -403,6 +403,7 @@ button:focus-visible {
 
 	display: flex;
 	gap: 1em;
+	flex-direction: column;
 }
 
 .truck-status {
