@@ -8,19 +8,24 @@ Rent.init({
     pickUpDate: {
         type: DataTypes.DATEONLY,
         allowNull: false,
+        isDate: true,
     },
     status: {
         type: DataTypes.ENUM,
         values: ["reserved", "pickedup", "returned", "canceled"],
-        default: "reserved"
+        defaultValue: "reserved"
     },
     hours: {
-        type: DataTypes.FLOAT,
-        allowNull: false
+        type: DataTypes.DECIMAL(10,1),
+        allowNull: false,
+        isNumeric: true,
+        min: 1,
     },
     payment: {
-        type: DataTypes.DECIMAL,
-        allowNull: true
+        type: DataTypes.DECIMAL(10,2),
+        allowNull: true,
+        isNumeric: true,
+        min:0.01,
     }
 }, {
     sequelize
