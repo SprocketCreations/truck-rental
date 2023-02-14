@@ -10,7 +10,7 @@ Truck.init({
         allowNull: false,
     },
     image: {
-        type: DataTypes.STRING,
+        type: DataTypes.BLOB,
         allowNull: false,
     },
     width: {
