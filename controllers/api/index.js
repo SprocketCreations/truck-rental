@@ -84,7 +84,7 @@ router.get("/search", async (req, res) => {
 
 			},
 			attributes: [
-				"id", "name", "width", "height", "length", "costPerMile", "costPerHour",
+				"id", "name", "width", "height", "length", "costPerMile", "costPerHour", "image",
 			],
 			include: [
 				{
@@ -139,7 +139,7 @@ router.get("/search", async (req, res) => {
 			} else {
 				truckDatas.push({
 					anchor: `/truck/view/${truck.id}`,
-					imageUrl: `/uploads/${truck.id}`,
+					imageUrl: `${truck.image}`,
 					name: truck.name,
 					pricePerHour: truck.costPerHour,
 					pricePerMile: truck.costPerMile,
