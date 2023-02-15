@@ -105,3 +105,6 @@ dist
 
 # VSCode Files
 .vscode
+
+# images folder
+public/images/*

@@ -37,7 +37,7 @@ router.post("/new", (req, res) => {
         const saveFileName = filename + fileExtension;
         const oldFilePath = files.image.filepath;
         const newFilePath = path.join(__dirname, "../../public/images/") + saveFileName;
-        const dbFileName = "./images/" + saveFileName;
+        const dbFileName = "/images/" + saveFileName;
         const rawImageData = fs.readFileSync(oldFilePath);
         fs.writeFileSync(newFilePath, rawImageData, function(err){
             if(err){

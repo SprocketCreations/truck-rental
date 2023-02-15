@@ -5,6 +5,11 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 const allRoutes = require('./controllers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const fs = require("fs");
+const path = require("path");
+
+// Create the needed "/public/images" folder
+const imagesFolder = fs.mkdirSync(path.join(__dirname, "/public/images"),{recursive: true})
 
 //initialize express and env.PORT or || 3000
 const app = express();
