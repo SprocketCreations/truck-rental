@@ -33,7 +33,7 @@ router.put("/return/:id", (req, res) => {
 			}
 		}).then(updateData => {
 			Truck.update({
-				odometer: rentData.Truck.odometer + req.body.distanceDriven,
+				odometer: rentData.Truck.odometer + (parseFloat(req.body.distanceDriven)),
 			}, {
 				where: {
 					id: rentData.Truck.id,

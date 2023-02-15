@@ -39,6 +39,9 @@
 			});
 			const json = await response.json();
 			console.log(json);
+			if(response.status === 201){
+				location.href="/dashboard/rental"
+			}
 		} catch (error) {
 			console.log(error);
 		}
