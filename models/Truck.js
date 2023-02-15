@@ -11,7 +11,7 @@ Truck.init({
         notEmpty: true,
     },
     image: {
-        type: DataTypes.BLOB,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
     width: {

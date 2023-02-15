@@ -8,15 +8,15 @@ const seed = async () => {
     const users = await User.bulkCreate([
         {
             email: "joe@joe.joe",
-            password: "password"
+            password: "@Password1!"
         },
         {
             email: "Andy@joe.joe",
-            password: "password1"
+            password: "@Password2!"
         },
         {
             email: "bob@bob.com",
-            password: "12345678"
+            password: "@Password3!"
         }
     ], {
         validate: true,

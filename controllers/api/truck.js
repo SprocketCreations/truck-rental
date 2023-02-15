@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { Truck, Rent, User } = require('../../models');
+const formidable = require("formidable");
+const fs = require("fs");
+const path = require("path");
 
 
 router.post("/reserve", (req, res) => {
@@ -9,7 +12,7 @@ router.post("/reserve", (req, res) => {
     }
     Rent.create({
         pickUpDate: req.body.pickUpDate,
-        hours:req.body.hours,
+        hours: req.body.hours,
         UserId: req.session.userId,
         TruckId: req.body.TruckId
     }).then(rentData => {
@@ -20,29 +23,49 @@ router.post("/reserve", (req, res) => {
     })
 })
 
+// TODO: FORMIDABLE code goes here:
 router.post("/new", (req, res) => {
     if (!req.session.userId) {
         return res.status(403).json({ msg: "login first to add new truck" })
     }
-    Truck.create({
-        name: req.body.name,
-        image: req.body.image,
-        width: req.body.width,
-        height: req.body.height,
-        length: req.body.length,
-        costPerMile: req.body.costPerMile,
-        costPerHour: req.body.costPerHour,
-        milesPerGallon: req.body.milesPerGallon,
-        odometer: req.body.odometer,
-        fuelCapacity: req.body.fuelCapacity,
-        features: req.body.feautures,
-        UserId: req.session.userId
-    }).then(blogData => {
-        res.status(201).json(blogData)
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
-    })
+    const form = new formidable.IncomingForm({
+        multiples: false,
+    });
+    form.parse(req, function (err, fields, files) {
+        const filename = files.image.newFilename;
+        const fileExtension = path.extname(files.image.originalFilename)
+        const saveFileName = filename + fileExtension;
+        const oldFilePath = files.image.filepath;
+        const newFilePath = path.join(__dirname, "../../public/images/") + saveFileName;
+        const dbFileName = "./images/" + saveFileName;
+        const rawImageData = fs.readFileSync(oldFilePath);
+        fs.writeFileSync(newFilePath, rawImageData, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                return;
+            }
+        });
+        Truck.create({
+            name: fields.name,
+            image: dbFileName,
+            width: fields.width,
+            height: fields.height,
+            length: fields.length,
+            costPerMile: fields.costPerMile,
+            costPerHour: fields.costPerHour,
+            milesPerGallon: fields.mpg,
+            odometer: fields.milage,
+            fuelCapacity: fields.fuelTankSize,
+            features: fields.feautures,
+            UserId: req.session.userId
+        }).then(truckData => {
+            res.status(201).json(truckData)
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({ msg: "INTERNAL SERVER ERROR", err })
+        })
+    });
 })
 
 router.put("/:id", (req, res) => {
@@ -73,7 +96,7 @@ router.put("/:id", (req, res) => {
 //debuging code
 router.get("/", (req, res) => {
     Truck.findAll({
-        include:[Rent, User]
+        include: [Rent, User]
     }).then(userData => {
         res.json(userData)
     }).catch(err => {
