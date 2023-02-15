@@ -9,7 +9,7 @@ This website is a platform to allow users to rent trucks for the purpose of haul
 
 - What did you learn?
 
-## Table of Contents (Optional)
+## Table of Contents
 
 - [Description](#description)
 - [Installation](#installation)
@@ -22,7 +22,7 @@ This website is a platform to allow users to rent trucks for the purpose of haul
 After you have cloned the repository by whatever means you prefer, you will need to run several commands and configure the environment variables to finalize the installation.
 
 1. Verify that you have Node and npm installed, then run `npm i` to install all the dependencies.
-2. A mysql server to connect to, it can be initialized using [`schema.sql`](./db/schema.sql).
+2. A mysql database is needed to connect to; which can be initialized using [`schema.sql`](./db/schema.sql).
 3. Create a `.env` file using [`.env.EXAMPLE`](./.env.EXAMPLE) as a template. You will need to enter your database connection information, as well as any string of characters to act as the session encyption key.
 4. Run `npm start` to launch the server.
 5. Optionally, you can run `npm run seed` to fill the database with placeholder data.
