@@ -1,18 +1,17 @@
 # Rent-A-Truck
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+Renting a truck for various projects and needs can be an arduous process. There are few truck rental options, and their websites can be frustrating to use. Rent-a-Truck is an attempt to create a streamlined experience for finding and renting a truck. It can allow users to get a truck that best fits their needs.
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
+This website is a platform to allow users to rent trucks for the purpose of hauling. Trucks can be filtered when searching to find a truck that best fits a user's needs. Those who own trucks can list them for users to find, and the system can track current rents as well as various metrics for the trucks.
+
 - What did you learn?
 
 ## Table of Contents (Optional)
 
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
+- [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -20,48 +19,46 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+After you have cloned the repository by whatever means you prefer, you will need to run several commands and configure the environment variables to finalize the installation.
+
+1. Verify that you have Node and npm installed, then run `npm i` to install all the dependencies.
+2. A mysql server to connect to, it can be initialized using [`schema.sql`](./db/schema.sql).
+3. Create a `.env` file using [`.env.EXAMPLE`](./.env.EXAMPLE) as a template. You will need to enter your database connection information, as well as any string of characters to act as the session encyption key.
+4. Run `npm start` to launch the server.
+5. Optionally, you can run `npm run seed` to fill the database with placeholder data.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+The website is hosted and visitable at [rent-a-truck.herokuapp.com
+](https://rent-a-truck.herokuapp.com).
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+You will need an account to actually do anything with the website, so you can click ["Sign In"](https://rent-a-truck.herokuapp.com/signin) from any page.
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+After signing in, you can go to the home page to see a list of available trucks. In the search section you can enter filters to find a truck that best fits your needs. Click any truck to see more detailed information about it, including a list of features and reviews. You can choose a rent pickup and duration, then reserve the truck. Later, you can go to ["Your Rentals"](https://rent-a-truck.herokuapp.com/dashboard/renter) to view your outstanding rents. From this page you can pickup or cancel any reservation, and later you can also return the truck. When returning a truck, you can leave a review to help future customers know about your experience with the truck.
+
+If you want to make a truck of your own available to rent, you can go to ["Your Trucks"](https://rent-a-truck.herokuapp.com/dashboard/rental) and click ["Add a New Truck"](https://rent-a-truck.herokuapp.com/truck/new). After posting your truck, it will become available to users for rent. You will be able to view the truck's revenue and history through the "Your Trucks" dashboard.
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+Jackie Lee: [JJackielee](https://github.com/JJackielee)
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+Jason Arter: [error201](https://github.com/error201)
 
-If you followed tutorials, include links to those here as well.
+Kailen James: [SprocketCreations](https://github.com/SprocketCreations)
+
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+This project is licenced under [The MIT Licence](LICENSE)
 
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
 ## Features
 
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+- Browse through and sort available trucks to rent.
+- See information about each truck, including reviews and a list of features.
+- Get payment estimations.
+- Rent as many trucks as you want.
+- Pickup, Cancel, and Return rented trucks.
+- Leave reviews on trucks you have rented.
+- Put up your own trucks for rent.
+- See your truck's rent history.
