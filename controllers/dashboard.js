@@ -5,6 +5,9 @@ const dayjs=require('dayjs')
 dayjs().format()
 
 router.get("/renter", (req, res) => {
+    if (!req.session.userId) {
+		res.redirect('/signin')
+	}
     User.findByPk(req.session.userId, {
         include: [{
              model: Rent, 
@@ -46,6 +49,9 @@ router.get("/renter", (req, res) => {
 })
 
 router.get("/rental", (req, res) => {
+    if (!req.session.userId) {
+		res.redirect('/signin')
+	}
     User.findByPk(req.session.userId, {
         include: [{ model: Truck, include: [Rent] }]
     }).then(userData => {
