@@ -1,13 +1,18 @@
 # Rent-A-Truck
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+![Image of the home page.](./preview/preview-home-01.jpg)
+![Image of the signin page.](./preview/preview-signin-01.jpg)
+![Image of the renter dashboard.](./preview/preview-renter-dashboard-01.jpg)
+![Image of the return page.](./preview/preview-return-01.jpg)
+![Image of the new truck page.](./preview/preview-new-truck-01.jpg)
+
 ## Description
 
 Renting a truck for various projects and needs can be an arduous process. There are few truck rental options, and their websites can be frustrating to use. Rent-a-Truck is an attempt to create a streamlined experience for finding and renting a truck. It can allow users to get a truck that best fits their needs.
 
 This website is a platform to allow users to rent trucks for the purpose of hauling. Trucks can be filtered when searching to find a truck that best fits a user's needs. Those who own trucks can list them for users to find, and the system can track current rents as well as various metrics for the trucks.
-
-- What did you learn?
 
 ## Table of Contents
 
